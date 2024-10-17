@@ -2,8 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 
 import Navigation from './Navigation.js'
-import LeftSection from './LeftSection'
 import RightSection from './RightSection.js'
+import LeftSection from './LeftSection.js'
+
 
 function App() {
     return(

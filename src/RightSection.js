@@ -1,11 +1,11 @@
 import React from 'react'
 import './RightSection.css'
+import example from './example.gif'
 
 function RightSection(){
     return(
         <div className="right">
-        <h1>Image sections</h1>
-        <img ></img>
+        <img src={example}></img>
         </div>
     )
 

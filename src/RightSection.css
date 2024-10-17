@@ -1,7 +1,13 @@
 .right{
     display: flex;
+    flex-direction: column;
     justify-content:center;
-   /* border-style: solid;*/
-    width:45%;
+    align-items: center;
+    
+    width:50%;
 }
 
+
+img{
+    width: 50%;
+}

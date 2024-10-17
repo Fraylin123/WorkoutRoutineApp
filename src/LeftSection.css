@@ -2,9 +2,10 @@
     display:flex;
     flex-wrap:wrap;
     flex-direction:column;
-    margin:50px;
-   /* border-style:solid ;*/
+    margin: 20px 30px;
+    /*border-style:solid;*/
     width:45%;
+
 
     
 }
@@ -12,11 +13,28 @@
 form{
     display:flex;
     flex-direction: column;
-    margin-top: 10px;
-    
 }
 
 form input{
-    
     margin: 5px 0;
 }
+
+.edit{
+    display:flex;
+    justify-content:flex-end;
+    width:100%;
+   /* margin-left: 90%;*/
+}
+
+.edit{
+    margin-right:20px;
+}
+
+.edit img{
+    width:20px;
+}
+
+.leftContainer{
+    padding: 5px;
+}
+
