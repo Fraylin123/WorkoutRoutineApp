@@ -2,9 +2,10 @@
     display:flex;
     flex-wrap:wrap;
     flex-direction:column;
-    margin: 20px 30px;
-    /*border-style:solid;*/
+    margin: 5px 30px;
+    border-style:solid;
     width:45%;
+
 
 
     

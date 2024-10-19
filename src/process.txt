@@ -1,0 +1,10 @@
+1. Finish the front end style of the page XXXXXXXX
+
+
+2. Add functionality for the radio buttons
+
+
+
+
+3. Add functionality for the plus and edit buttons
+

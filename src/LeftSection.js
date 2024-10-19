@@ -4,31 +4,16 @@ import plusIcon from "./icons/plus.png"
 import penIcon from "./icons/pen.png"
 /*Add the icons in the edit div*/
 function LeftSection() {
+
+
     return (
         <div className='left'>
-
-            <div className='routineType'>
-                <label>
-                    <input type='radio' value='PPL' id='ppl' />
-                    PPL
-                </label>
-                <label>
-                    <input type='radio' />
-                    Upper Lower
-                </label>
-                <label>
-                    <input type='radio' />
-                    Bro Split
-                </label>
-
-            </div>
-
             <div className="leftContainer">
                 <div className='edit'>
                     <img src={plusIcon} alt="plus icon" />
                     <img src={penIcon} alt="pen icon" />
                 </div>
-                
+
                 <form>
                     <label>Exercise 1:</label>
                     <input type="text" placeholder="Type exercise"></input>
