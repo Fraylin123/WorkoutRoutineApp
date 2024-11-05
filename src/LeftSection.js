@@ -6,7 +6,7 @@ import penIcon from "./icons/pen.png"
 function LeftSection() {
     const [exercise, setExercise] = useState("");
 
-    const exerciseList = ['Bench Press', 'Dumbell Press', 'Cable Raises', 'Dumbell Lateral Raises'];
+    const exerciseList = ['Bench Press', 'Dumbell Press', 'Cable Raises', 'Dumbell Lateral Raises', "Push ups"];
 
 
 
@@ -29,7 +29,7 @@ function LeftSection() {
                             {exerciseList.filter((item) => {
                                 const exerciseSearch = exercise.toLowerCase();
                                 const currExercise = item.toLowerCase()
-                                return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise != exerciseSearch)
+                                return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise !== exerciseSearch)
 
                             }).map((mapExercise) => (
                                 <div className="dropdown-row" onClick={() => setExercise(mapExercise)}>{mapExercise}</div>))}
@@ -50,7 +50,7 @@ function LeftSection() {
                             {exerciseList.filter((item) => {
                                 const exerciseSearch = exercise.toLowerCase();
                                 const currExercise = item.toLowerCase()
-                                return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise != exerciseSearch)
+                                return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise !== exerciseSearch)
 
                             }).map((mapExercise) => (
                                 <div className="dropdown-row" onClick={() => setExercise(mapExercise)}>{mapExercise}</div>))}
@@ -69,7 +69,7 @@ function LeftSection() {
                             {exerciseList.filter((item) => {
                                 const exerciseSearch = exercise.toLowerCase();
                                 const currExercise = item.toLowerCase()
-                                return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise != exerciseSearch)
+                                return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise !== exerciseSearch)
 
                             }).map((mapExercise) => (
                                 <div className="dropdown-row" onClick={() => setExercise(mapExercise)}>{mapExercise}</div>))}
@@ -89,7 +89,7 @@ function LeftSection() {
                             {exerciseList.filter((item) => {
                                 const exerciseSearch = exercise.toLowerCase();
                                 const currExercise = item.toLowerCase()
-                                return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise != exerciseSearch)
+                                return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise !== exerciseSearch)
 
                             }).map((mapExercise) => (
                                 <div className="dropdown-row" onClick={() => setExercise(mapExercise)}>{mapExercise}</div>))}
@@ -108,7 +108,7 @@ function LeftSection() {
                             {exerciseList.filter((item) => {
                                 const exerciseSearch = exercise.toLowerCase();
                                 const currExercise = item.toLowerCase()
-                                return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise != exerciseSearch)
+                                return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise !== exerciseSearch)
 
                             }).map((mapExercise) => (
                                 <div className="dropdown-row" onClick={() => setExercise(mapExercise)}>{mapExercise}</div>))}
