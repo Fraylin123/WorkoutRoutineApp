@@ -17,6 +17,7 @@ form{
     
     width:76%;
     margin-right: 2px;
+    position:relative;
     
 }
 
@@ -61,10 +62,17 @@ form input{
     flex-shrink: 0;
     width:6%;
     margin: 0px 1px;
+    
 
 }
 
 .dropDown {
+    position:absolute;
+    top:100%;
+    left: 0;
+    z-index: 50;
+    
+
     background-color: white;
     display:flex;
     flex-direction: column;

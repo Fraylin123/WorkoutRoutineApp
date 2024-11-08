@@ -3,7 +3,7 @@ import './LeftSection.css'
 import plusIcon from "./icons/plus.png"
 import penIcon from "./icons/pen.png"
 /*Add the icons in the edit div*/
-function LeftSection() {
+function LeftSection(workoutType) {
     const [exercises, setExercise] = useState(["", "", "", "", ""]);
 
     const exerciseList = ['Bench Press', 'Dumbell Press', 'Cable Raises', 'Dumbell Lateral Raises', "Push ups"];
@@ -15,10 +15,6 @@ function LeftSection() {
     }
 
 
-
-
-
-
     return (
         <div className='left'>
             <div className='editContainer'>
@@ -28,6 +24,7 @@ function LeftSection() {
 
             </div>
 
+ 
             <form>
                 {exercises.map((exercise, index) => (
                     <div key={index}>
@@ -39,7 +36,7 @@ function LeftSection() {
                                     {exerciseList.filter((item) => {
                                         const exerciseSearch = exercise.toLowerCase();
                                         const currExercise = item.toLowerCase()
-                                        return (exerciseSearch && currExercise.startsWith(exerciseSearch) && currExercise !== exerciseSearch)
+                                        return (exerciseSearch && currExercise.includes(exerciseSearch) && currExercise !== exerciseSearch)
 
                                     }).map((mapExercise) => (
                                         <div className="dropdown-row" onClick={() => {handleExercise(mapExercise,index)}}>{mapExercise}</div>))}
@@ -51,7 +48,6 @@ function LeftSection() {
 
                         </div>
                     </div>
-
 
                 ))}
                 </form>
