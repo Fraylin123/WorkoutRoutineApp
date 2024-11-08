@@ -1,20 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
 
 import Navigation from './Navigation.js'
 import RightSection from './RightSection.js'
 import LeftSection from './LeftSection.js'
+import { useState } from "react";
 
 
 function App() {
+    const [routineValues, setRoutineValues] = useState([false,false,false])
+    const [fitnessValues, setFitnessValues] = useState([false,false,false])
+
+    const handleClick = (event) => {
+        setRoutineValues([])
+        alert("Button clicked");
+        alert("The value is: " + event.target.value);
+
+    }
     return (
         <>
             <Navigation />
             <h1 style={{ textAlign: 'center' }}>Workout Routine App</h1>
             <div className='routineType'>
-                <button>PPL</button>
-                <button>Upper Lower</button>
-                <button>Bro Split</button>
+                <button onClick={handleClick} >PPL</button>
+                <button onClick={handleClick}>Upper Lower</button>
+                <button onClick={handleClick}>Bro Split</button>
             </div>
 
             <div className="fitnessLevel">

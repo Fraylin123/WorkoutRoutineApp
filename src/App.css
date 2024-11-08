@@ -24,12 +24,18 @@
   background-color:black;
   color: white;
   padding:15px;
+  transition-duration:0.4s;
+  cursor:pointer;
+  text-align:center;
 }
 
 .routineType button:hover, .fitnessLevel button:hover{
  background-color: gray;
 }
 
+.fitnessLevel {
+  display:none;
+}
 
 .mainContainer{
   margin-top: 20px;
@@ -67,3 +73,4 @@
 .submit button:hover{
   background-color: gray;
 }
+
