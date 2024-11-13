@@ -4,6 +4,7 @@ import Navigation from './Navigation.js'
 import RightSection from './RightSection.js'
 import LeftSection from './LeftSection.js'
 import { useState } from "react";
+import pushup from "./pushup.gif"
 
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
         setFitnessValues((prev) => {
             return prev.map((_,i) => i === index);
         });
+    }
+    const data = {
+        image: pushup
     }
 
 
@@ -46,34 +50,34 @@ function App() {
 
                 <div className='pairedContainer'>
                     <LeftSection />
-                    <RightSection />
+                    <RightSection imgData={data}/>
                 </div>
 
                 <h3>Tuesday</h3>
 
                 <div className='pairedContainer'>
                     <LeftSection />
-                    <RightSection />
+                    <RightSection  imgData={data}/>
                 </div>
 
                 <h3>Wednesday</h3>
                 <div className='pairedContainer'>
                     <LeftSection />
-                    <RightSection />
+                    <RightSection  imgData={data}/>
                 </div>
 
                 <h3>Thursday</h3>
 
                 <div className='pairedContainer'>
                     <LeftSection />
-                    <RightSection />
+                    <RightSection  imgData={data}/>
                 </div>
 
                 <h3>Friday</h3>
 
                 <div className='pairedContainer'>
                     <LeftSection />
-                    <RightSection />
+                    <RightSection  imgData={data}/>
                 </div>
 
             </div>

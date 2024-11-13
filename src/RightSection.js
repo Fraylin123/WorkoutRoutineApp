@@ -1,11 +1,12 @@
 import React from 'react'
 import './RightSection.css'
-import example from './example.gif'
+//import example from './example.gif'
 
-function RightSection(){
+
+function RightSection({imgData}){
     return(
         <div className="right">
-        <img src={example}></img>
+        <img src={imgData.image} alt='gif' />
         </div>
     )
 
