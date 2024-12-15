@@ -3,10 +3,10 @@ import './RightSection.css'
 //import example from './example.gif'
 
 
-function RightSection({imgData}){
+function RightSection({data}){
     return(
         <div className="right">
-        <img src={imgData.image} alt='gif' />
+        <img src={'/public/Pushups.gif'} alt='gif' />
         </div>
     )
 

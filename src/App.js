@@ -4,12 +4,15 @@ import Navigation from './Navigation.js'
 import RightSection from './RightSection.js'
 import LeftSection from './LeftSection.js'
 import { useState } from "react";
-import pushup from "./pushup.gif"
+
 
 
 function App() {
     const [routineValues, setRoutineValues] = useState([false,false,false]);
     const [fitnessValues, setFitnessValues] = useState([false,false,false]);
+    const [activeExercises, setActiveExercises] = useState({})
+    const [data, setData] = useState('');
+
 
     const handleRoutineClick = (index) => {
         setRoutineValues((prev) => {
@@ -20,12 +23,8 @@ function App() {
     const handleFitnessClick = (index) => {
         setFitnessValues((prev) => {
             return prev.map((_,i) => i === index);
-        });
+        })
     }
-    const data = {
-        image: pushup
-    }
-
 
     return (
         <>
@@ -49,7 +48,7 @@ function App() {
                 <h3>Monday</h3>
 
                 <div className='pairedContainer'>
-                    <LeftSection />
+                    <LeftSection setData={setData}/>
                     <RightSection imgData={data}/>
                 </div>
 
