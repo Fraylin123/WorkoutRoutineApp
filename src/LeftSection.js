@@ -11,7 +11,7 @@ function LeftSection({ setData }) {
     const exerciseList = ['Bench Press', 'Dumbell Press', 'Cable Raises', 'Dumbell Lateral Raises', 'Push ups'];
 
     const handleExercise = (id, newValue) => {
-        const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercises, value:newValue} : exercise);
+        const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, value:newValue} : exercise);
         setExercise(updatedExercisesList);
     }
 
@@ -43,7 +43,7 @@ function LeftSection({ setData }) {
                         <label>{"Exercise " + (index + 1) + ":"}</label>
                         <div className="exerciseGroup">
                             <div className="autocomplete">
-                                <input type="text" placeholder="Type exercise" className="exercises" onChange={(event) => handleExercise( exercise.id ,event.target.value)} value={exercise.value}></input>
+                                <input type="text" placeholder="Type exercise" className="exercises" onChange={(event) => handleExercise(exercise.id ,event.target.value)} value={exercise.value}></input>
                                 <div className='dropDown'>
                                     {exerciseList.filter((item) => {
                                         const exerciseSearch = exercise.value.toLowerCase();
