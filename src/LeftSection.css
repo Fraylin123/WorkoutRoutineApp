@@ -8,6 +8,7 @@
 form{
     display:flex;
     flex-direction: column;
+    margin-left:5px
     
 }
 
@@ -39,17 +40,36 @@ form input{
 }
 
 .editContainer{
-    display:block;
-   
-    width:100%;
+    display:flex;
+    justify-content:start;  
+    width:20%;
 }
 
 
 .editContainer img{
-    width:4%
-  
-   
+    width:1.5rem;
+
 }
+
+.editContainer button{
+    border:none;
+    cursor:pointer;
+    appearance:none;
+    background-color: inherit;
+    
+}
+
+.deleteExercise{
+    border:none;
+    cursor:pointer;
+    appearance:none;
+    background-color: inherit;
+}
+
+.deleteExercise img{
+    width: 1.5rem;
+}
+
 
 
 .exercises{
