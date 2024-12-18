@@ -11,7 +11,7 @@ function App() {
     const [routineValues, setRoutineValues] = useState([false,false,false]);
     const [fitnessValues, setFitnessValues] = useState([false,false,false]);
     const [activeExercises, setActiveExercises] = useState({})
-    const [data, setData] = useState('');
+    const [data, setData] = useState('initial');
 
 
     const handleRoutineClick = (index) => {
@@ -49,34 +49,35 @@ function App() {
 
                 <div className='pairedContainer'>
                     <LeftSection setData={setData}/>
-                    <RightSection imgData={data}/>
+                    {console.log(data)}
+                    <RightSection data={data}/>
                 </div>
 
                 <h3>Tuesday</h3>
 
                 <div className='pairedContainer'>
                     <LeftSection />
-                    <RightSection  imgData={data}/>
+                    <RightSection  />
                 </div>
 
                 <h3>Wednesday</h3>
                 <div className='pairedContainer'>
                     <LeftSection />
-                    <RightSection  imgData={data}/>
+                    <RightSection  />
                 </div>
 
                 <h3>Thursday</h3>
 
                 <div className='pairedContainer'>
                     <LeftSection />
-                    <RightSection  imgData={data}/>
+                    <RightSection  />
                 </div>
 
                 <h3>Friday</h3>
 
                 <div className='pairedContainer'>
                     <LeftSection />
-                    <RightSection  imgData={data}/>
+                    <RightSection  />
                 </div>
 
             </div>

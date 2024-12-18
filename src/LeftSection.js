@@ -13,6 +13,12 @@ function LeftSection({ setData }) {
     const handleExercise = (id, newValue) => {
         const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, value:newValue} : exercise);
         setExercise(updatedExercisesList);
+
+        if (exerciseList.includes(newValue)){
+            console.log("Inside");
+            setData(newValue);
+        }
+        
     }
 
     const handleClick = () => {
@@ -50,8 +56,8 @@ function LeftSection({ setData }) {
                                         const currExercise = item.toLowerCase()
                                         return (exerciseSearch && currExercise.includes(exerciseSearch) && currExercise !== exerciseSearch)
 
-                                    }).map((mapExercise) => (
-                                        <div className="dropdown-row" onClick={() => { handleExercise(exercise.id, mapExercise) }}>{mapExercise}</div>))}
+                                    }).map((mapExercise, id) => (
+                                        <div key = {id} className="dropdown-row" onClick={() => { handleExercise(exercise.id, mapExercise) }}>{mapExercise}</div>))}
                                 </div>
                             </div>
 
