@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import './LeftSection.css'
 import plusIcon from "./icons/plus.png"
 import penIcon from "./icons/pen.png"
@@ -7,14 +8,26 @@ import minusIcon from "./icons/minus.png"
 function LeftSection({ setData }) {
     const [exercises, setExercise] = useState([{id: 1, value: ""}, {id: 2, value: ""}, {id: 3, value: ""}, {id: 4, value: ""}, {id: 5, value: ""}]);
     const [editMode, setEditMode] = useState(false);
+    const [exercisesList, setExercisesList] = useState([])
 
-    const exerciseList = ['Bench Press', 'Dumbell Press', 'Cable Raises', 'Dumbell Lateral Raises', 'Push ups'];
+    useEffect(() => {
+        axios.get("http://localhost:5000/exercises")
+            .then((response) => {
+                setExercisesList(response.data);
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
+
+    const exerciseNames = exercisesList.map(exercise => exercise._id)
 
     const handleExercise = (id, newValue) => {
         const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, value:newValue} : exercise);
         setExercise(updatedExercisesList);
 
-        if (exerciseList.includes(newValue)){
+        if (exerciseNames.includes(newValue)){
             console.log("Inside");
             setData(newValue);
         }
@@ -51,7 +64,7 @@ function LeftSection({ setData }) {
                             <div className="autocomplete">
                                 <input type="text" placeholder="Type exercise" className="exercises" onChange={(event) => handleExercise(exercise.id ,event.target.value)} value={exercise.value}></input>
                                 <div className='dropDown'>
-                                    {exerciseList.filter((item) => {
+                                    {exerciseNames.filter((item) => {
                                         const exerciseSearch = exercise.value.toLowerCase();
                                         const currExercise = item.toLowerCase()
                                         return (exerciseSearch && currExercise.includes(exerciseSearch) && currExercise !== exerciseSearch)
