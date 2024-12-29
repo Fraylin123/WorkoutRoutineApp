@@ -8,30 +8,33 @@ import minusIcon from "./icons/minus.png"
 function LeftSection({ setData }) {
     const [exercises, setExercise] = useState([{id: 1, value: ""}, {id: 2, value: ""}, {id: 3, value: ""}, {id: 4, value: ""}, {id: 5, value: ""}]);
     const [editMode, setEditMode] = useState(false);
-    const [exercisesList, setExercisesList] = useState([])
+    const [exercisesList, setExercisesList] = useState([]);
+    const [currentDropdown, setCurrentDropdown] = useState(null);
 
     useEffect(() => {
         axios.get("http://localhost:5000/exercises")
             .then((response) => {
-                setExercisesList(response.data);
-                console.log(response.data)
+                const exerciseNames = response.data.map(exercise => exercise._id)
+                setExercisesList(exerciseNames)
             })
             .catch((error) => {
                 console.error("Error fetching data:", error);
             });
     }, []);
 
-    const exerciseNames = exercisesList.map(exercise => exercise._id)
 
     const handleExercise = (id, newValue) => {
         const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, value:newValue} : exercise);
         setExercise(updatedExercisesList);
 
-        if (exerciseNames.includes(newValue)){
-            console.log("Inside");
-            setData(newValue);
-        }
-        
+    }
+
+    const handleClickExercise = (id, newValue) => {
+        const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, value:newValue} : exercise);
+        setExercise(updatedExercisesList);
+        setCurrentDropdown(null)
+        setData(newValue);
+
     }
 
     const handleClick = () => {
@@ -62,16 +65,19 @@ function LeftSection({ setData }) {
                         <label>{"Exercise " + (index + 1) + ":"}</label>
                         <div className="exerciseGroup">
                             <div className="autocomplete">
-                                <input type="text" placeholder="Type exercise" className="exercises" onChange={(event) => handleExercise(exercise.id ,event.target.value)} value={exercise.value}></input>
+                                <input type="text" placeholder="Type exercise" className="exercises" onChange={(event) => handleExercise(exercise.id ,event.target.value)} value={exercise.value} onFocus = {() => setCurrentDropdown(exercise.id)}></input>
                                 <div className='dropDown'>
-                                    {exerciseNames.filter((item) => {
-                                        const exerciseSearch = exercise.value.toLowerCase();
-                                        const currExercise = item.toLowerCase()
-                                        return (exerciseSearch && currExercise.includes(exerciseSearch) && currExercise !== exerciseSearch)
+                                    {currentDropdown === exercise.id &&
+                                        exercisesList.filter((item) => {
+                                            const exerciseSearch = exercise.value.toLowerCase();
+                                            const currExercise = item.toLowerCase();
+                                            return (exerciseSearch && currExercise.startsWith(exerciseSearch) && exerciseSearch != currExercise);
 
-                                    }).map((mapExercise, id) => (
-                                        <div key = {id} className="dropdown-row" onClick={() => { handleExercise(exercise.id, mapExercise) }}>{mapExercise}</div>))}
+                                        }).map((mapExercise, id) => (
+                                            <div key = {id} className="dropdown-row" onClick={() => {handleClickExercise(exercise.id, mapExercise)}}>{mapExercise}</div>))
+                                    }
                                 </div>
+                                
                             </div>
 
                             <input type="text" placeholder="Sets" className="sets"></input>

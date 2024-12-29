@@ -1,18 +1,36 @@
 import React from 'react'
 import './RightSection.css'
+import {useState, useEffect} from 'react'
+import axios from 'axios'
 //import example from './example.gif'
 
 
 function RightSection({data}){
-    let source = "https://fitnessprogramer.com/wp-content/uploads/2021/02/Push-Up.gif"
-    if (data && data.length > 0 && data === "Dumbell Press"){
-        source= 'https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Press.gif'
-    }
+    const [exerciseVid, setExerciseGif] = useState('')
+    console.log(data)
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/exercises/${data}`).then(
+            (response) => {
+                console.log("Succesful request!")
+                const vidID = response.data['video']
+                setExerciseGif(`https://www.youtube.com/embed/${vidID}`)
+            }
+        ).catch((error) => {
+            console.log("Error fetching this exercise:", error)
+        })
+    }, [data]);
+
+
+    
+
+
+
 
     return(
         <div className="right">
-            <img src={source} alt='gif' />
-            <p>{data}</p>
+            <iframe width="560" height="315" src={exerciseVid} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p>{exerciseVid}</p>
         </div>
     )
 

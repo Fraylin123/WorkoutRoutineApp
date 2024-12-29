@@ -56,28 +56,32 @@ function App() {
                 <h3>Tuesday</h3>
 
                 <div className='pairedContainer'>
-                    <LeftSection />
-                    <RightSection  />
+                    <LeftSection setData={setData}/>
+                    {console.log(data)}
+                    <RightSection data={data}/>
                 </div>
 
                 <h3>Wednesday</h3>
                 <div className='pairedContainer'>
-                    <LeftSection />
-                    <RightSection  />
+                    <LeftSection setData={setData}/>
+                    {console.log(data)}
+                    <RightSection data={data}/>
                 </div>
 
                 <h3>Thursday</h3>
 
                 <div className='pairedContainer'>
-                    <LeftSection />
-                    <RightSection  />
+                    <LeftSection setData={setData}/>
+                    {console.log(data)}
+                    <RightSection data={data}/>
                 </div>
 
                 <h3>Friday</h3>
 
                 <div className='pairedContainer'>
-                    <LeftSection />
-                    <RightSection  />
+                    <LeftSection setData={setData}/>
+                    {console.log(data)}
+                    <RightSection data={data}/>
                 </div>
 
             </div>

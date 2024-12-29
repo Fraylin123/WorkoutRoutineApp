@@ -28,6 +28,8 @@ const exerciseSchema = new mongoose.Schema({
 
 const Exercise = mongoose.model('Exercise', exerciseSchema);
 
+
+//APIs Routes
 app.get('/exercises', async (req, res) => {
     try {
         const exercises = await Exercise.find({});
