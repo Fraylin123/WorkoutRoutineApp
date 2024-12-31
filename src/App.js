@@ -10,9 +10,9 @@ import { useState, useEffect } from "react";
 function App() {
     const [routineValues, setRoutineValues] = useState([false, false, false]);
     const [fitnessValues, setFitnessValues] = useState([false, false, false]);
-    const [activeExercises, setActiveExercises] = useState({})
     const [days, setDays] = useState([])
     const [data, setData] = useState(['', '', '', '', '', '', '']);
+    const [exerciseJSON, setExerciseJSON] = [] 
 
 
     const handleRoutineClick = (index) => {
@@ -32,31 +32,38 @@ function App() {
         setData(newData)
     }
 
+    const updateExerciseJSON = (index, item) => {
+        const newJSON = [...exerciseJSON]
+        newJSON[index] = item
+        setExerciseJSON(newJSON)
+    }
+
+    //If it's a rest day, delete it so that it doesnt render
     useEffect(() => {
         if (routineValues[0] && fitnessValues[0]) {  //PPL Beginner fitness levels
             console.log("Inside")
-            setDays(["Monday - Push", "Tuesday - Rest", "Wednesday - Pull", "Thursday - Rest", "Friday - Legs", "Saturday - Rest", "Sunday - Rest"])
+            setDays(["Monday - Push", "Wednesday - Pull", "Friday - Legs",])
         }
         else if (routineValues[0] && fitnessValues[1]) { //PPL Intermediate
-            setDays(["Monday - Push", "Tuesday - Pull", "Wednesday - Legs", "Thursday - Rest", "Friday - Push", "Saturday - Pull", "Sunday - Legs"])
+            setDays(["Monday - Push", "Tuesday - Pull", "Wednesday - Legs", "Friday - Push", "Saturday - Pull", "Sunday - Legs"])
         }
         else if (routineValues[0] && fitnessValues[2]) { //PPL Advanced
-            setDays(["Monday - Push", "Tuesday - Pull", "Wednesday - Legs", "Thursday - Push", "Friday - Pull", "Saturday - Legs", "Sunday - Rest"])
+            setDays(["Monday - Push", "Tuesday - Pull", "Wednesday - Legs", "Thursday - Push", "Friday - Pull", "Saturday - Legs"])
         }
         else if (routineValues[1] && fitnessValues[0]) { //Upper-Lower Beginner
-            setDays(["Monday - Upper", "Tuesday - Lower", "Wednesday - Rest", "Thursday - Upper", "Friday - Lower", "Saturday - Rest", "Sunday - Rest"])
+            setDays(["Monday - Upper", "Tuesday - Lower",  "Thursday - Upper", "Friday - Lower"])
         }
         else if (routineValues[1] && (fitnessValues[1] || fitnessValues[2])) { //Upper-Lower Intermediate and advanced
-            setDays(["Monday - Upper", "Tuesday - Lower", "Wednesday - Upper", "Thursday - Lower", "Friday - Upper", "Saturday - Lower", "Sunday - Rest"])
+            setDays(["Monday - Upper", "Tuesday - Lower", "Wednesday - Upper", "Thursday - Lower", "Friday - Upper", "Saturday - Lower"])
         }
         else if (routineValues[2] && fitnessValues[0]) { //Bro Split Beginner
-            setDays(["Monday - Chest, Shoulders, Triceps", "Tuesday - Rest", "Wednesday - Back, Biceps", "Thursday - Rest", "Friday - Legs", "Saturday - Rest", "Sunday - Rest"])
+            setDays(["Monday - Chest, Shoulders, Triceps", "Wednesday - Back, Biceps", "Friday - Legs"])
         }
         else if (routineValues[2] && fitnessValues[1]) { //Bro Split Intermediate
-            setDays(["Monday - Chest", "Tuesday - Back", "Wednesday - Shoulder", "Thursday - Leg", "Friday - Arm", "Saturday - Rest", "Sunday - Rest"])
+            setDays(["Monday - Chest", "Tuesday - Back", "Wednesday - Shoulder", "Thursday - Leg", "Friday - Arm"])
         }
         else if (routineValues[2] && fitnessValues[2]) { //Bro Split Advanced
-            setDays(["Monday - Chest, Triceps", "Tuesday - Back, Biceps", "Wednesday - Legs", "Thursday - Shoulders, Arms", "Friday - Chest", "Saturday - Legs", "Sunday - Rest"])
+            setDays(["Monday - Chest, Triceps", "Tuesday - Back, Biceps", "Wednesday - Legs", "Thursday - Shoulders, Arms", "Friday - Chest", "Saturday - Legs"])
         }
 
     }, [routineValues, fitnessValues])
@@ -85,23 +92,34 @@ function App() {
                     <div key={index}>
                         <h3>{day}</h3>
                         <div className="pairedContainer">
-                            <LeftSection setData={(value) => updateData(index, value)} />
+                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)}  day = {day} />
                             <RightSection data={data[index]} />
                         </div>
                     </div>
 
                 ))
-
                 }
             </div>
-
+            {fitnessValues.some(value => value === true) &&
             <div className='submit'>
                 <button>Save</button>
 
             </div>
+            }  
         </>
     )
 
 }
 
 export default App;
+
+
+/*
+Data format:
+
+[{day: Monday - Push
+exercisesData: [{exerciseName: Cable Crunch , sets: 3 , reps: 12}, {}, {}]},
+ {},
+{}]
+
+*/

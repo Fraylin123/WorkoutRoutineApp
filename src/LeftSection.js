@@ -5,7 +5,7 @@ import plusIcon from "./icons/plus.png"
 import penIcon from "./icons/pen.png"
 import minusIcon from "./icons/minus.png"
 /*Add the icons in the edit div*/
-function LeftSection({ setData }) {
+function LeftSection(props) {
     const [exercises, setExercise] = useState([{id: 1, value: ""}, {id: 2, value: ""}, {id: 3, value: ""}, {id: 4, value: ""}, {id: 5, value: ""}]);
     const [editMode, setEditMode] = useState(false);
     const [exercisesList, setExercisesList] = useState([]);
@@ -33,7 +33,7 @@ function LeftSection({ setData }) {
         const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, value:newValue} : exercise);
         setExercise(updatedExercisesList);
         setCurrentDropdown(null)
-        setData(newValue);
+        props.setData(newValue);
     }
 
     const handleClick = () => {
@@ -47,6 +47,15 @@ function LeftSection({ setData }) {
     const handleDelete = (id) => {
         const updatedExercisesList = exercises.filter((exercise) => exercise.id !== id)
         setExercise(updatedExercisesList);
+    }
+
+    const fetchJSON = () => {
+        let itemJSON = 
+        {
+            //day: day
+            //exercises: 
+
+        }
     }
 
 
