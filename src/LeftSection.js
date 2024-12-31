@@ -34,11 +34,10 @@ function LeftSection({ setData }) {
         setExercise(updatedExercisesList);
         setCurrentDropdown(null)
         setData(newValue);
-
     }
 
     const handleClick = () => {
-        setExercise([...exercises, {id:Date.now(), value:""}]);
+        setExercise([...exercises, {id:Date.now(), value: ""}]);
     }
 
     const handleToggleMode = () => {
