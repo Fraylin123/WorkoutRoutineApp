@@ -49,11 +49,17 @@ function LeftSection(props) {
         setExercise(updatedExercisesList);
     }
 
-    const fetchJSON = () => {
+    function fetchJSON() {
         let itemJSON = 
         {
-            //day: day
+            day: props.day
             //exercises: 
+
+        }
+    }
+
+    function getExercises(){
+        for (let i = 0; i < exercises.length; i++){
 
         }
     }
@@ -88,8 +94,8 @@ function LeftSection(props) {
                                 
                             </div>
 
-                            <input type="text" placeholder="Sets" className="sets"></input>
-                            <input type="text" placeholder="Reps" className="reps"></input>
+                            <input type="text" placeholder="Sets" className="sets"/>
+                            <input type="text" placeholder="Reps" className="reps"/>
                             {editMode && (
                                 <button className="deleteExercise" onClick={() => handleDelete(exercise.id)}><img src={minusIcon} alt="minus icon" /></button>
                             )}

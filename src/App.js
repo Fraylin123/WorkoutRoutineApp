@@ -88,11 +88,11 @@ function App() {
             }
 
             <div className='mainContainer'>
-                {days.map((day, index) => (
+                {days.map((currDay, index) => (
                     <div key={index}>
-                        <h3>{day}</h3>
+                        <h3>{currDay}</h3>
                         <div className="pairedContainer">
-                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)}  day = {day} />
+                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)}  day = {currDay} />
                             <RightSection data={data[index]} />
                         </div>
                     </div>
