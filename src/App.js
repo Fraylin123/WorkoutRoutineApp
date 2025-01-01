@@ -12,7 +12,7 @@ function App() {
     const [fitnessValues, setFitnessValues] = useState([false, false, false]);
     const [days, setDays] = useState([])
     const [data, setData] = useState(['', '', '', '', '', '', '']);
-    const [exerciseJSON, setExerciseJSON] = [] 
+    const [exerciseJSON, setExerciseJSON] = useState([]) 
 
 
     const handleRoutineClick = (index) => {
@@ -36,6 +36,10 @@ function App() {
         const newJSON = [...exerciseJSON]
         newJSON[index] = item
         setExerciseJSON(newJSON)
+    }
+
+    const handleSaveClick = () => {
+        console.log(exerciseJSON)
     }
 
     //If it's a rest day, delete it so that it doesnt render
@@ -102,7 +106,7 @@ function App() {
             </div>
             {fitnessValues.some(value => value === true) &&
             <div className='submit'>
-                <button>Save</button>
+                <button onClick = {() => handleSaveClick() }>Save</button>
 
             </div>
             }  

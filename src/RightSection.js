@@ -7,7 +7,7 @@ import axios from 'axios'
 
 function RightSection({ data }) {
     const [exerciseVid, setExerciseVid] = useState('')
-    console.log(data)
+    
 
     useEffect(() => {
         if (data.length > 0) {

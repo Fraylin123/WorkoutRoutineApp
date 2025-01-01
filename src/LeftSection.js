@@ -5,8 +5,8 @@ import plusIcon from "./icons/plus.png"
 import penIcon from "./icons/pen.png"
 import minusIcon from "./icons/minus.png"
 /*Add the icons in the edit div*/
-function LeftSection(props) {
-    const [exercises, setExercise] = useState([{id: 1, value: ""}, {id: 2, value: ""}, {id: 3, value: ""}, {id: 4, value: ""}, {id: 5, value: ""}]);
+function LeftSection({setData, setJSON, day}) {
+    const [exercises, setExercise] = useState([{id: 1, name: "", sets: "", reps: ""}, {id: 2, name: "", sets: "", reps: ""}, {id: 3, name: "", sets: "", reps: ""}, {id: 4, name: "", sets: "", reps: ""}, {id: 5, name: "", sets: "", reps: ""}]);
     const [editMode, setEditMode] = useState(false);
     const [exercisesList, setExercisesList] = useState([]);
     const [currentDropdown, setCurrentDropdown] = useState(null);
@@ -22,22 +22,38 @@ function LeftSection(props) {
             });
     }, []);
 
+    useEffect(() => {
+        const exerciseItem = {
+            day: day,
+            exercises: exercises.filter((exercise) => exercise.name && exercise.sets && exercise.reps)
+        };
+        setJSON(exerciseItem)
 
-    const handleExercise = (id, newValue) => {
-        const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, value:newValue} : exercise);
-        setExercise(updatedExercisesList);
+    }, [exercises])
 
+
+    const handleExercise = (id, property, newValue) => {
+        const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, [property]:newValue} : exercise); //Dynamic key usage that handles input changes.
+        let temp = Number(newValue) 
+        if ((property === "sets" || property === "reps") && (isNaN(temp))){ //Checking if the input is non-numeric, if non-numeric don't update
+        }
+        else{
+            setExercise(updatedExercisesList);
+        }
+        
     }
 
     const handleClickExercise = (id, newValue) => {
-        const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, value:newValue} : exercise);
+        const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, name:newValue} : exercise);
         setExercise(updatedExercisesList);
         setCurrentDropdown(null)
-        props.setData(newValue);
+        setData(newValue);
+        
     }
 
     const handleClick = () => {
-        setExercise([...exercises, {id:Date.now(), value: ""}]);
+        setExercise([...exercises, {id:Date.now(), name: "", sets: "", reps: ""}]);
+        
     }
 
     const handleToggleMode = () => {
@@ -52,14 +68,8 @@ function LeftSection(props) {
     function fetchJSON() {
         let itemJSON = 
         {
-            day: props.day
+            day: day
             //exercises: 
-
-        }
-    }
-
-    function getExercises(){
-        for (let i = 0; i < exercises.length; i++){
 
         }
     }
@@ -79,13 +89,13 @@ function LeftSection(props) {
                         <label>{"Exercise " + (index + 1) + ":"}</label>
                         <div className="exerciseGroup">
                             <div className="autocomplete">
-                                <input type="text" placeholder="Type exercise" className="exercises" onChange={(event) => handleExercise(exercise.id ,event.target.value)} value={exercise.value} onFocus = {() => setCurrentDropdown(exercise.id)}></input>
+                                <input type="text" placeholder="Type exercise" className="exercises" onChange={(event) => handleExercise(exercise.id, "name", event.target.value)} value={exercise.name} onFocus = {() => setCurrentDropdown(exercise.id)}/>
                                 <div className='dropDown'>
                                     {currentDropdown === exercise.id &&
                                         exercisesList.filter((item) => {
-                                            const exerciseSearch = exercise.value.toLowerCase();
+                                            const exerciseSearch = exercise.name.toLowerCase();
                                             const currExercise = item.toLowerCase();
-                                            return (exerciseSearch && currExercise.startsWith(exerciseSearch) && exerciseSearch != currExercise);
+                                            return (exerciseSearch && currExercise.startsWith(exerciseSearch) && exerciseSearch !== currExercise);
 
                                         }).map((mapExercise, id) => (
                                             <div key = {id} className="dropdown-row" onClick={() => {handleClickExercise(exercise.id, mapExercise)}}>{mapExercise}</div>))
@@ -94,8 +104,9 @@ function LeftSection(props) {
                                 
                             </div>
 
-                            <input type="text" placeholder="Sets" className="sets"/>
-                            <input type="text" placeholder="Reps" className="reps"/>
+                            <input type="text" placeholder="Sets" className="sets" value = {exercise.sets}onChange = {(event) => handleExercise(exercise.id, "sets", event.target.value)}/>
+                            <input type="text" placeholder="Reps" className="reps" value = {exercise.reps} onChange = {(event) => handleExercise(exercise.id, "reps", event.target.value)}/>
+                            
                             {editMode && (
                                 <button className="deleteExercise" onClick={() => handleDelete(exercise.id)}><img src={minusIcon} alt="minus icon" /></button>
                             )}
