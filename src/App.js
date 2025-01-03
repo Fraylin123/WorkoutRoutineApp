@@ -13,7 +13,7 @@ function App() {
     const [days, setDays] = useState([])
     const [data, setData] = useState(['', '', '', '', '', '', '']);
     const [exerciseJSON, setExerciseJSON] = useState([]) 
-
+    const [errors, setErrors] = useState({})
 
     const handleRoutineClick = (index) => {
         setRoutineValues((prev) => {
@@ -33,19 +33,57 @@ function App() {
     }
 
     const updateExerciseJSON = (index, item) => {
-        const newJSON = [...exerciseJSON]
-        newJSON[index] = item
-        setExerciseJSON(newJSON)
+        setExerciseJSON((prev) => {
+            const newJSON = [...prev]
+            newJSON[index] = item || {day: days[index], exercises: [] }
+            return newJSON
+        })
+    }
+
+    const inputValidation = () => {
+        console.log("calling inputValidation")
+        const newErrors = {};
+        let hasError = false;
+        exerciseJSON.forEach((dayData, dayIndex) => {
+            if (!dayData || dayData.exercises.length === 0){
+                console.log("Correct condition")
+                return
+
+            } ; //Pre-check
+            const exerciseErrors = {}
+            dayData.exercises.forEach((exercise, exerciseIndex) => { //Iterate over the exercises array
+               if (!exercise.name || !exercise.sets || !exercise.reps){
+                hasError = true
+                exerciseErrors[exerciseIndex] = {
+                    name: !exercise.name,
+                    sets: !exercise.sets,
+                    reps: !exercise.reps,
+                }
+               }
+
+            })
+            if (Object.keys(exerciseErrors).length > 0){
+                newErrors[dayIndex] = exerciseErrors; 
+            }
+        });
+
+        setErrors(newErrors)
+        return !hasError
     }
 
     const handleSaveClick = () => {
         console.log(exerciseJSON)
+        if (inputValidation()){
+            alert("No errors")
+        }
+        else{
+            alert("There are errors, please fix")
+        }
     }
 
     //If it's a rest day, delete it so that it doesnt render
     useEffect(() => {
         if (routineValues[0] && fitnessValues[0]) {  //PPL Beginner fitness levels
-            console.log("Inside")
             setDays(["Monday - Push", "Wednesday - Pull", "Friday - Legs",])
         }
         else if (routineValues[0] && fitnessValues[1]) { //PPL Intermediate
@@ -96,7 +134,7 @@ function App() {
                     <div key={index}>
                         <h3>{currDay}</h3>
                         <div className="pairedContainer">
-                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)}  day = {currDay} />
+                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)}  day = {currDay} errors= {errors[index] || {}} />
                             <RightSection data={data[index]} />
                         </div>
                     </div>
