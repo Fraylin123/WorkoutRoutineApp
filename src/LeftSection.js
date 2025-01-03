@@ -10,6 +10,7 @@ function LeftSection({setData, setJSON, day}) {
     const [editMode, setEditMode] = useState(false);
     const [exercisesList, setExercisesList] = useState([]);
     const [currentDropdown, setCurrentDropdown] = useState(null);
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         axios.get("http://localhost:5000/exercises")
@@ -33,14 +34,21 @@ function LeftSection({setData, setJSON, day}) {
 
 
     const handleExercise = (id, property, newValue) => {
-        const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, [property]:newValue} : exercise); //Dynamic key usage that handles input changes.
-        let temp = Number(newValue) 
-        if ((property === "sets" || property === "reps") && (isNaN(temp))){ //Checking if the input is non-numeric, if non-numeric don't update
+        const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? {...exercise, [property]:newValue} : exercise); //Dynamic key usage that handles input changes. 
+        if ((property === "sets" || property === "reps") && (isNaN(newValue))){ //Checking if the input is non-numeric, if non-numeric don't update
+            return;
         }
         else{
             setExercise(updatedExercisesList);
         }
-        
+
+        //Change the field that had errors to no errors
+        if (newValue.trim() !== ""){
+            setErrors((prev) => ({
+                ...prev,
+                [id]: {...prev[id], [property]: false} //Set that property to false to indicate no errors
+            }));
+        }
     }
 
     const handleClickExercise = (id, newValue) => {

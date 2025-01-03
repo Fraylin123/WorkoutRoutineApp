@@ -27,18 +27,18 @@ function RightSection({ data }) {
     let renderContent;
 
     if (data.length > 0 && exerciseVid != "https://www.youtube.com/embed/None"){
-        renderContent = (<iframe width="560" height="315" src={exerciseVid} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>);
+        renderContent = (<iframe src={exerciseVid} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>);
     }
     else if (data.length > 0 && exerciseVid === "https://www.youtube.com/embed/None"){
         renderContent = (
             <div>
-            <img src="https://preview.redd.it/959czh3iwjx41.png?auto=webp&s=c555e34cb7017fda681ce472f2ade1649b53b039" alt="placeholder" style = {{width: 560, height:315}}/>
+            <img src="https://preview.redd.it/959czh3iwjx41.png?auto=webp&s=c555e34cb7017fda681ce472f2ade1649b53b039" alt="placeholder" />
             <p>Can't get video due to muscleandstrength.com video privacy policies (not a youtube video)</p>
             </div>
         )
     }
     else{
-        renderContent = (<img src="https://healvets.org/wp-content/uploads/2021/10/ef3-placeholder-image.jpeg" alt="error image" style = {{width: 560, height:315}}/>)
+        renderContent = (<img src="https://healvets.org/wp-content/uploads/2021/10/ef3-placeholder-image.jpeg" alt="error image" />)
     }
     
     
