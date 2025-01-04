@@ -88,7 +88,7 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
                         <label>{"Exercise " + (index + 1) + ":"}</label>
                         <div className="exerciseGroup">
                             <div className="autocomplete">
-                                <input type="text" placeholder="Type exercise" className={`exercises ${errors[index]?.name ? "error" : ""}`} onChange={(event) => handleExercise(exercise.id, "name", event.target.value)} value={exercise.name} onFocus = {() => setCurrentDropdown(exercise.id)}/>
+                                <input type="text" placeholder="Type exercise" className={`exercises ${errors[index]?.name? "error" : ""}`} onChange={(event) => handleExercise(exercise.id, "name", event.target.value)} value={exercise.name} onFocus = {() => setCurrentDropdown(exercise.id)}/>
                                 <div className='dropDown'>
                                     {currentDropdown === exercise.id &&
                                         exercisesList.filter((item) => {
