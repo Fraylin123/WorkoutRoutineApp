@@ -12,8 +12,8 @@ function App() {
     const [routineValues, setRoutineValues] = useState([false, false, false]);
     const [fitnessValues, setFitnessValues] = useState([false, false, false]);
     const [days, setDays] = useState([])
-    const [data, setData] = useState(['', '', '', '', '', '', '']);
-    const [exerciseJSON, setExerciseJSON] = useState([]) 
+    const [data, setData] = useState([{}, {}, {}, {}, {}, {}, {}]);
+    const [exerciseJSON, setExerciseJSON] = useState([])
     const [errors, setErrors] = useState({})
     const [buttonClicked, setButtonClicked] = useState(false)
 
@@ -21,7 +21,7 @@ function App() {
         setRoutineValues((prev) => {
             return prev.map((_, i) => i === index);
         });
-        
+
     }
 
     const handleFitnessClick = (index) => {
@@ -38,7 +38,7 @@ function App() {
     const updateExerciseJSON = (index, item) => {
         setExerciseJSON((prev) => {
             const newJSON = [...prev]
-            newJSON[index] = item || {day: days[index], exercises: [] }
+            newJSON[index] = item || { day: days[index], exercises: [] }
             return newJSON
         })
     }
@@ -48,26 +48,26 @@ function App() {
         const newErrors = {};
         let hasError = false;
         exerciseJSON.forEach((dayData, dayIndex) => {
-            if (!dayData || dayData.exercises.length === 0){
+            if (!dayData || dayData.exercises.length === 0) {
                 console.log("Correct condition")
                 return
 
-            } ; //Pre-check
+            }; //Pre-check
             const exerciseErrors = []
             dayData.exercises.forEach((exercise, exerciseIndex) => { //Iterate over the exercises array
-               if (!exercise.name || !exercise.sets || !exercise.reps){
-                hasError = true
-                exerciseErrors[exerciseIndex] = {
-                    id: exercise.id,
-                    name: !exercise.name,
-                    sets: !exercise.sets,
-                    reps: !exercise.reps,
+                if (!exercise.name || !exercise.sets || !exercise.reps) {
+                    hasError = true
+                    exerciseErrors[exerciseIndex] = {
+                        id: exercise.id,
+                        name: !exercise.name,
+                        sets: !exercise.sets,
+                        reps: !exercise.reps,
+                    }
                 }
-               }
 
             })
-            if (Object.keys(exerciseErrors).length > 0){
-                newErrors[dayIndex] = exerciseErrors; 
+            if (Object.keys(exerciseErrors).length > 0) {
+                newErrors[dayIndex] = exerciseErrors;
             }
         });
 
@@ -77,10 +77,10 @@ function App() {
 
     const handleSaveClick = () => {
         console.log(exerciseJSON)
-        if (inputValidation()){
+        if (inputValidation()) {
             setButtonClicked(true)
         }
-        else{
+        else {
             alert("There are errors, please fix")
         }
     }
@@ -96,36 +96,36 @@ function App() {
 
     //If it's a rest day, delete it so that it doesnt render
     useEffect(() => {
-        if (routineValues[0] && fitnessValues[0]) {  //PPL Beginner fitness levels
-            setDays(["Monday - Push", "Wednesday - Pull", "Friday - Legs"])
-        }
-        else if (routineValues[0] && fitnessValues[1]) { //PPL Intermediate
-            setDays(["Monday - Push", "Tuesday - Pull", "Wednesday - Legs", "Friday - Push", "Saturday - Pull", "Sunday - Legs"])
-        }
-        else if (routineValues[0] && fitnessValues[2]) { //PPL Advanced
-            setDays(["Monday - Push", "Tuesday - Pull", "Wednesday - Legs", "Thursday - Push", "Friday - Pull", "Saturday - Legs"])
-        }
-        else if (routineValues[1] && fitnessValues[0]) { //Upper-Lower Beginner
-            setDays(["Monday - Upper", "Tuesday - Lower",  "Thursday - Upper", "Friday - Lower"])
-        }
-        else if (routineValues[1] && (fitnessValues[1] || fitnessValues[2])) { //Upper-Lower Intermediate and advanced
-            setDays(["Monday - Upper", "Tuesday - Lower", "Wednesday - Upper", "Thursday - Lower", "Friday - Upper", "Saturday - Lower"])
-        }
-        else if (routineValues[2] && fitnessValues[0]) { //Bro Split Beginner
-            setDays(["Monday - Chest, Shoulders, Triceps", "Wednesday - Back, Biceps", "Friday - Legs"])
-        }
-        else if (routineValues[2] && fitnessValues[1]) { //Bro Split Intermediate
-            setDays(["Monday - Chest", "Tuesday - Back", "Wednesday - Shoulder", "Thursday - Leg", "Friday - Arm"])
-        }
-        else if (routineValues[2] && fitnessValues[2]) { //Bro Split Advanced
-            setDays(["Monday - Chest, Triceps", "Tuesday - Back, Biceps", "Wednesday - Legs", "Thursday - Shoulders, Arms", "Friday - Chest", "Saturday - Legs"])
-        }
+        const generateUniqueDays = (daysArray) => {
+            const timestamp = Date.now(); // Use a timestamp to create a unique key
+            return daysArray.map((day, index) => ({ name: day, id: `${day}-${timestamp}-${index}` }));
+        };
 
-    }, [routineValues, fitnessValues])
-   
+        if (routineValues[0] && fitnessValues[0]) {
+            setDays(generateUniqueDays(["Monday - Push", "Wednesday - Pull", "Friday - Legs"]));
+        } else if (routineValues[0] && fitnessValues[1]) {
+            setDays(generateUniqueDays(["Monday - Push", "Tuesday - Pull", "Wednesday - Legs", "Friday - Push", "Saturday - Pull", "Sunday - Legs"]));
+        } else if (routineValues[0] && fitnessValues[2]) {
+            setDays(generateUniqueDays(["Monday - Push", "Tuesday - Pull", "Wednesday - Legs", "Thursday - Push", "Friday - Pull", "Saturday - Legs"]));
+        } else if (routineValues[1] && fitnessValues[0]) {
+            setDays(generateUniqueDays(["Monday - Upper", "Tuesday - Lower", "Thursday - Upper", "Friday - Lower"]));
+        } else if (routineValues[1] && (fitnessValues[1] || fitnessValues[2])) {
+            setDays(generateUniqueDays(["Monday - Upper", "Tuesday - Lower", "Wednesday - Upper", "Thursday - Lower", "Friday - Upper", "Saturday - Lower"]));
+        } else if (routineValues[2] && fitnessValues[0]) {
+            setDays(generateUniqueDays(["Monday - Chest, Shoulders, Triceps", "Wednesday - Back, Biceps", "Friday - Legs"]));
+        } else if (routineValues[2] && fitnessValues[1]) {
+            setDays(generateUniqueDays(["Monday - Chest", "Tuesday - Back", "Wednesday - Shoulder", "Thursday - Leg", "Friday - Arm"]));
+        } else if (routineValues[2] && fitnessValues[2]) {
+            setDays(generateUniqueDays(["Monday - Chest, Triceps", "Tuesday - Back, Biceps", "Wednesday - Legs", "Thursday - Shoulders, Arms", "Friday - Chest", "Saturday - Legs"]));
+        }
+    }, [routineValues, fitnessValues]);
+
+
     useEffect(() => {
-        // Reinitialize exerciseJSON to match the new days
-        setExerciseJSON(days.map((day) => ({ day: day, exercises: [{id: 1, name: "", sets: "", reps: ""}, {id: 2, name: "", sets: "", reps: ""}, {id: 3, name: "", sets: "", reps: ""}, {id: 4, name: "", sets: "", reps: ""}, {id: 5, name: "", sets: "", reps: ""}] })));
+        setExerciseJSON((prev) => {
+            const resetJSON = [...prev]
+            return days.map((day, index) => ({ day: day.name, exercises: resetJSON[index]?.exercises ? resetJSON[index].exercises : [{ id: 1, name: "", sets: "", reps: "" }, { id: 2, name: "", sets: "", reps: "" }, { id: 3, name: "", sets: "", reps: "" }, { id: 4, name: "", sets: "", reps: "" }, { id: 5, name: "", sets: "", reps: "" }] }))
+        });
     }, [days]);
 
     return (
@@ -149,9 +149,9 @@ function App() {
             <div className='mainContainer'>
                 {days.map((currDay, index) => (
                     <div key={index}>
-                        <h3>{currDay}</h3>
+                        <h3>{currDay.name}</h3>
                         <div className="pairedContainer">
-                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)}  day = {currDay} errors= {errors[index] || []} setErrors={(item) => sendArray(index, item)} />
+                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)} day={currDay} errors={errors[index] || []} setErrors={(item) => sendArray(index, item)} />
                             <RightSection data={data[index]} />
                         </div>
                     </div>
@@ -160,14 +160,14 @@ function App() {
                 }
             </div>
             {fitnessValues.some(value => value === true) &&
-            <div className='submit'>
-                <button onClick = {() => handleSaveClick() }>Save</button>
-            </div>
+                <div className='submit'>
+                    <button onClick={() => handleSaveClick()}>Save</button>
+                </div>
             }
 
-            {buttonClicked && 
-            <Result exerciseData= {exerciseJSON}/>
-            
+            {buttonClicked &&
+                <Result exerciseData={exerciseJSON} />
+
             }
         </>
     )

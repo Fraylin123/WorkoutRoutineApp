@@ -23,15 +23,15 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
     }, []);
 
     useEffect(() => {
-        console.log("Current day is: ", day)
+        console.log("Current day is: ", day.name)
         const exerciseItem = {
-            day: day,
+            day: day.name,
             exercises: exercises
         };
         console.log("Exercises are: ", exerciseItem)
         setJSON(exerciseItem)
 
-    }, [exercises, day])
+    }, [exercises, day.id])
 
 
     const handleExercise = (id, property, newValue) => {
