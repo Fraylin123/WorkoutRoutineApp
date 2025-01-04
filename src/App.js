@@ -38,13 +38,6 @@ function App() {
         })
     }
 
-    const sendArray = (index, item) => {
-        setErrors((prev) => ({
-            ...prev,
-            [index]: item,
-        }))
-    }
-
     const inputValidation = () => {
         console.log("calling inputValidation")
         const newErrors = {};
@@ -55,12 +48,11 @@ function App() {
                 return
 
             } ; //Pre-check
-            const exerciseErrors = []
+            const exerciseErrors = {}
             dayData.exercises.forEach((exercise, exerciseIndex) => { //Iterate over the exercises array
                if (!exercise.name || !exercise.sets || !exercise.reps){
                 hasError = true
                 exerciseErrors[exerciseIndex] = {
-                    id: exercise.id,
                     name: !exercise.name,
                     sets: !exercise.sets,
                     reps: !exercise.reps,
@@ -78,14 +70,13 @@ function App() {
     }
 
     const handleSaveClick = () => {
-       console.log("Exercise JSON is: \n", exerciseJSON)
+        console.log(exerciseJSON)
         if (inputValidation()){
             alert("No errors")
         }
         else{
             alert("There are errors, please fix")
         }
-       
     }
 
     //If it's a rest day, delete it so that it doesnt render
@@ -141,7 +132,7 @@ function App() {
                     <div key={index}>
                         <h3>{currDay}</h3>
                         <div className="pairedContainer">
-                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)}  day = {currDay} errors= {errors[index] || {}} setErrors={(item) => sendArray(index, item)} />
+                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)}  day = {currDay} errors= {errors[index] || {}} />
                             <RightSection data={data[index]} />
                         </div>
                     </div>
