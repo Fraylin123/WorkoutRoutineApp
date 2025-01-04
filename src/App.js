@@ -6,7 +6,6 @@ import LeftSection from './LeftSection.js'
 import { useState, useEffect } from "react";
 
 
-
 function App() {
     const [routineValues, setRoutineValues] = useState([false, false, false]);
     const [fitnessValues, setFitnessValues] = useState([false, false, false]);
@@ -23,7 +22,6 @@ function App() {
 
     const handleFitnessClick = (index) => {
         setFitnessValues((prev) => prev.map((_, i) => i === index))
-
     }
 
     const updateData = (index, exercise) => {
