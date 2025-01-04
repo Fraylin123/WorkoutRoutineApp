@@ -23,10 +23,12 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
     }, []);
 
     useEffect(() => {
+        console.log("Current day is: ", day)
         const exerciseItem = {
             day: day,
             exercises: exercises
         };
+        console.log("Exercises are: ", exerciseItem)
         setJSON(exerciseItem)
 
     }, [exercises, day])
@@ -41,7 +43,7 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
             setExercise(updatedExercisesList);
         }
 
-        if (newValue.trim() !== ""){
+        if (newValue.trim() !== "" && errors){
             setErrors(errors.map((item) => item.id === id ? {...item, [property]: false} : item))
         }
     }
@@ -56,6 +58,7 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
 
     const handleClick = () => {
         setExercise([...exercises, {id:Date.now(), name: "", sets: "", reps: ""}]);
+        console.log(errors)
         
     }
 
@@ -85,7 +88,7 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
                         <label>{"Exercise " + (index + 1) + ":"}</label>
                         <div className="exerciseGroup">
                             <div className="autocomplete">
-                                <input type="text" placeholder="Type exercise" className="exercises" onChange={(event) => handleExercise(exercise.id, "name", event.target.value)} value={exercise.name} onFocus = {() => setCurrentDropdown(exercise.id)} style = {{borderColor: errors[index]?.name ? "red" : "black" }}/>
+                                <input type="text" placeholder="Type exercise" className={`exercises ${errors[index]?.name ? "error" : ""}`} onChange={(event) => handleExercise(exercise.id, "name", event.target.value)} value={exercise.name} onFocus = {() => setCurrentDropdown(exercise.id)}/>
                                 <div className='dropDown'>
                                     {currentDropdown === exercise.id &&
                                         exercisesList.filter((item) => {
@@ -100,8 +103,8 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
                                 
                             </div>
 
-                            <input type="text" placeholder="Sets" className="sets" value = {exercise.sets}onChange = {(event) => handleExercise(exercise.id, "sets", event.target.value)} style = {{borderColor: errors[index]?.sets ? "red" : "black" }}/>
-                            <input type="text" placeholder="Reps" className="reps" value = {exercise.reps} onChange = {(event) => handleExercise(exercise.id, "reps", event.target.value)} style = {{borderColor: errors[index]?.reps ? "red" : "black" }}/>
+                            <input type="text" placeholder="Sets" className={`sets ${errors[index]?.sets ? "error" : ""}`} value = {exercise.sets} onChange = {(event) => handleExercise(exercise.id, "sets", event.target.value)}/>
+                            <input type="text" placeholder="Reps" className={`reps ${errors[index]?.reps ? "error" : ""}`} value = {exercise.reps} onChange = {(event) => handleExercise(exercise.id, "reps", event.target.value)}/>
                             
                             {editMode && (
                                 <button className="deleteExercise" onClick={() => handleDelete(exercise.id)}><img src={minusIcon} alt="minus icon" /></button>

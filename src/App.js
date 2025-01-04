@@ -3,6 +3,7 @@ import './App.css';
 import Navigation from './Navigation.js'
 import RightSection from './RightSection.js'
 import LeftSection from './LeftSection.js'
+import Result from "./Result.js"
 import { useState, useEffect } from "react";
 
 
@@ -14,11 +15,13 @@ function App() {
     const [data, setData] = useState(['', '', '', '', '', '', '']);
     const [exerciseJSON, setExerciseJSON] = useState([]) 
     const [errors, setErrors] = useState({})
+    const [buttonClicked, setButtonClicked] = useState(false)
 
     const handleRoutineClick = (index) => {
         setRoutineValues((prev) => {
             return prev.map((_, i) => i === index);
         });
+        
     }
 
     const handleFitnessClick = (index) => {
@@ -75,7 +78,7 @@ function App() {
     const handleSaveClick = () => {
         console.log(exerciseJSON)
         if (inputValidation()){
-            alert("No errors")
+            setButtonClicked(true)
         }
         else{
             alert("There are errors, please fix")
@@ -94,7 +97,7 @@ function App() {
     //If it's a rest day, delete it so that it doesnt render
     useEffect(() => {
         if (routineValues[0] && fitnessValues[0]) {  //PPL Beginner fitness levels
-            setDays(["Monday - Push", "Wednesday - Pull", "Friday - Legs",])
+            setDays(["Monday - Push", "Wednesday - Pull", "Friday - Legs"])
         }
         else if (routineValues[0] && fitnessValues[1]) { //PPL Intermediate
             setDays(["Monday - Push", "Tuesday - Pull", "Wednesday - Legs", "Friday - Push", "Saturday - Pull", "Sunday - Legs"])
@@ -119,7 +122,11 @@ function App() {
         }
 
     }, [routineValues, fitnessValues])
-
+   
+    useEffect(() => {
+        // Reinitialize exerciseJSON to match the new days
+        setExerciseJSON(days.map((day) => ({ day: day, exercises: [{id: 1, name: "", sets: "", reps: ""}, {id: 2, name: "", sets: "", reps: ""}, {id: 3, name: "", sets: "", reps: ""}, {id: 4, name: "", sets: "", reps: ""}, {id: 5, name: "", sets: "", reps: ""}] })));
+    }, [days]);
 
     return (
         <>
@@ -144,7 +151,7 @@ function App() {
                     <div key={index}>
                         <h3>{currDay}</h3>
                         <div className="pairedContainer">
-                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)}  day = {currDay} errors= {errors[index] || {}} setErrors={(item) => sendArray(index, item)} />
+                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)}  day = {currDay} errors= {errors[index] || []} setErrors={(item) => sendArray(index, item)} />
                             <RightSection data={data[index]} />
                         </div>
                     </div>
@@ -155,9 +162,13 @@ function App() {
             {fitnessValues.some(value => value === true) &&
             <div className='submit'>
                 <button onClick = {() => handleSaveClick() }>Save</button>
-
             </div>
-            }  
+            }
+
+            {buttonClicked && 
+            <Result exerciseData= {exerciseJSON}/>
+            
+            }
         </>
     )
 

@@ -104,3 +104,7 @@ form input{
     text-align:start;
     margin: 1px 0;
 }
+
+.error{
+    border: solid red;
+}
