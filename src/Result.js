@@ -1,7 +1,9 @@
 import React from 'react'
-import 'Result.css'
+import './Result.css'
 
 function Result({ exerciseData }) {
+  
+
 
 
     return (
@@ -21,8 +23,10 @@ function Result({ exerciseData }) {
                     </div>
 
                 ))
+                
 
             }
+            <button className="copyClipboard">Copy</button>
 
 
         </div>

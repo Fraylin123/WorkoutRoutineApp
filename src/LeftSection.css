@@ -2,6 +2,7 @@
     margin: 5px 30px;
     width:50%;
     padding: 20px;
+   
     
 }
 
@@ -15,7 +16,6 @@ form{
 .autocomplete{
     display:flex;
     flex-direction: column;
-    
     width:76%;
     margin-right: 2px;
     position:relative;
@@ -41,11 +41,13 @@ form input{
     display:flex;
     justify-content:start;  
     width:20%;
+   
 }
 
 
 .editContainer img{
-    width:1.5rem;
+    width: 2em;
+    height: 2em;
 
 }
 
@@ -65,7 +67,8 @@ form input{
 }
 
 .deleteExercise img{
-    width: 1.5rem;
+    width: 2em;
+    height: 2em;
 }
 
 
@@ -106,5 +109,5 @@ form input{
 }
 
 .error{
-    border: solid red;
+    border: 1px solid red;
 }
