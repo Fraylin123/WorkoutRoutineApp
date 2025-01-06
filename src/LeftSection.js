@@ -23,12 +23,12 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
     }, []);
 
     useEffect(() => {
-        console.log("Current day is: ", day.name)
+       
         const exerciseItem = {
             day: day.name,
             exercises: exercises
         };
-        console.log("Exercises are: ", exerciseItem)
+      
         setJSON(exerciseItem)
 
     }, [exercises, day.id])
@@ -64,13 +64,17 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
 
     const handleToggleMode = () => {
         setEditMode(!editMode);
+        console.log(errors)
     }
 
     const handleDelete = (id) => {
         const updatedExercisesList = exercises.filter((exercise) => exercise.id !== id)
         setExercise(updatedExercisesList);
+        setErrors(errors.filter((exercise) => exercise.id !== id))
+        console.log(errors)
     }
 
+    
     
 
 

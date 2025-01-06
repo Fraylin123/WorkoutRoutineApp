@@ -97,7 +97,7 @@ function App() {
     //If it's a rest day, delete it so that it doesnt render
     useEffect(() => {
         const generateUniqueDays = (daysArray) => {
-            const timestamp = Date.now(); // Use a timestamp to create a unique key
+            const timestamp = Date.now(); 
             return daysArray.map((day, index) => ({ name: day, id: `${day}-${timestamp}-${index}` }));
         };
 
