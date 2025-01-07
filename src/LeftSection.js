@@ -5,7 +5,7 @@ import plusIcon from "./icons/plus.png"
 import penIcon from "./icons/pen.png"
 import minusIcon from "./icons/minus.png"
 /*Add the icons in the edit div*/
-function LeftSection({setData, setJSON, day, errors, setErrors}) {
+function LeftSection({setData, setJSON, day, errors, setErrors, setButtonClicked}) {
     const [exercises, setExercise] = useState([{id: 1, name: "", sets: "", reps: ""}, {id: 2, name: "", sets: "", reps: ""}, {id: 3, name: "", sets: "", reps: ""}, {id: 4, name: "", sets: "", reps: ""}, {id: 5, name: "", sets: "", reps: ""}]);
     const [editMode, setEditMode] = useState(false);
     const [exercisesList, setExercisesList] = useState([]);
@@ -46,6 +46,7 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
         if (newValue.trim() !== "" && errors){
             setErrors(errors.map((item) => item.id === id ? {...item, [property]: false} : item))
         }
+        setButtonClicked(false)
     }
 
     const handleClickExercise = (id, newValue) => {
@@ -58,6 +59,7 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
 
     const handleClick = () => {
         setExercise([...exercises, {id:Date.now(), name: "", sets: "", reps: ""}]);
+        setButtonClicked(false)
         console.log(errors)
         
     }
@@ -71,6 +73,7 @@ function LeftSection({setData, setJSON, day, errors, setErrors}) {
         const updatedExercisesList = exercises.filter((exercise) => exercise.id !== id)
         setExercise(updatedExercisesList);
         setErrors(errors.filter((exercise) => exercise.id !== id))
+        setButtonClicked(false)
         console.log(errors)
     }
 

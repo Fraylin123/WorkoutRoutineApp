@@ -21,4 +21,7 @@
 .copyClipboard{
     cursor:pointer;
   }
-  
+
+ul{
+    text-align:left;
+}
