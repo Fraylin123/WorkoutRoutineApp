@@ -1,2 +1,0 @@
-1. Transfer data from one component to the other through getter and setter component technique
-* The parent component sends data to the leftSection (input) and the leftSection sends the modified data back to parent and the parent then send this data to the rightSection (output).
