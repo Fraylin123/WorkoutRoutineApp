@@ -66,7 +66,7 @@ function LeftSection({setData, setJSON, day, errors, setErrors, setButtonClicked
 
     const handleToggleMode = () => {
         setEditMode(!editMode);
-        console.log(errors)
+   
     }
 
     const handleDelete = (id) => {
@@ -74,13 +74,11 @@ function LeftSection({setData, setJSON, day, errors, setErrors, setButtonClicked
         setExercise(updatedExercisesList);
         setErrors(errors.filter((exercise) => exercise.id !== id))
         setButtonClicked(false)
-        console.log(errors)
+      
     }
 
     
     
-
-
     return (
         <div className='left'>
             <div className='editContainer'>

@@ -3,6 +3,7 @@
     width:50%;
     padding: 20px;
    
+   
     
 }
 
@@ -30,6 +31,8 @@ form{
 .exerciseGroup{
     display: flex;
     flex-direction: row;
+    gap: 3px;
+   
 }
 
 
@@ -41,14 +44,12 @@ form input{
     display:flex;
     justify-content:start;  
     width:20%;
-   
 }
 
 
 .editContainer img{
     width: 2em;
     height: 2em;
-
 }
 
 .editContainer button{
@@ -64,7 +65,12 @@ form input{
     cursor:pointer;
     appearance:none;
     background-color: inherit;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
 }
+
 
 .deleteExercise img{
     width: 2em;
@@ -72,19 +78,18 @@ form input{
 }
 
 
-
 .exercises{
-    width:75%;
+    width:100%;
     margin-right:2px;
+
+    
 }
 
 
 .sets, .reps{
-    flex-shrink: 0;
     width:6%;
     margin: 0px 1px;
     
-
 }
 
 .dropDown {
@@ -92,8 +97,6 @@ form input{
     top:100%;
     left: 0;
     z-index: 50;
-    
-
     background-color: white;
     display:flex;
     flex-direction: column;
@@ -110,4 +113,23 @@ form input{
 
 .error{
     border: 1px solid red;
+}
+
+@media only screen and (max-width: 600px){
+    .exerciseGroup{
+        display:flex;
+        flex-direction: row;
+
+    }
+    .left{
+        margin: 0px 2px;
+        width: 60%;
+        padding: 0;
+    }
+    .sets, .reps{
+        width: 22%;
+       
+    }
+   
+   
 }

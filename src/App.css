@@ -8,7 +8,6 @@
 }
 
 .routineType, .fitnessLevel{
-  margin-left:50px;
   display:flex;
   justify-content: center;
 }
