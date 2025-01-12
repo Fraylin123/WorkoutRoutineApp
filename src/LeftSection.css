@@ -107,6 +107,7 @@ form input{
 
 .dropdown-row{
     cursor: pointer;
+    padding-left: 2px;
     text-align:start;
     margin: 1px 0;
 }
@@ -127,9 +128,8 @@ form input{
         padding: 0;
     }
     .sets, .reps{
-        width: 22%;
+        width: 12%;
        
     }
-   
    
 }
