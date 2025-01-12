@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 function Navigation(){
     return(
         <div className='nav'>
-            <Link to="/">Home</Link>
-            <Link to="/browse">Browse</Link>
-            <Link to="/blog">Blog</Link>
+            <Link to="/WorkoutRoutineApp">Home</Link>
+            <Link to="/WorkoutRoutineApp/browse">Browse</Link>
+            <Link to="/WorkoutRoutineApp/blog">Blog</Link>
         </div>
 
     )

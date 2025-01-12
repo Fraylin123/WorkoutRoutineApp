@@ -27,7 +27,7 @@ function RightSection({ data }) {
     let renderContent;
 
     if (data.length > 0 && exerciseVid != "https://www.youtube.com/embed/None"){
-        renderContent = (<iframe src={exerciseVid} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>);
+        renderContent = (<iframe src={exerciseVid} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>);
     }
     else if (data.length > 0 && exerciseVid === "https://www.youtube.com/embed/None"){
         renderContent = (

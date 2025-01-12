@@ -12,9 +12,8 @@ function App() {
             <Navigation />
 
             <Routes>
-                
-                <Route path="/" element = {<Home />} />
-                <Route path="/browse" element = {<Browse />} />
+                <Route path="/WorkoutRoutineApp" element = {<Home />} />
+                <Route path="/WorkoutRoutineApp/browse" element = {<Browse />} />
             </Routes>
            
         </Router>
