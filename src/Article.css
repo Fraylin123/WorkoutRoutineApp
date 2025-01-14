@@ -3,18 +3,16 @@
     margin: 50px;
 }
 
+img{
+    margin:auto;
+}
+
 .textSection{
     margin: 10px 20px;
-   
-   
 }
 
 .textSection span{
     color: gray;
-}
-
-img{
-    margin:auto;
 }
 
 .textSection h2{
@@ -32,4 +30,3 @@ img{
 .textSection a:hover{
     color: lightblue;
 }
-

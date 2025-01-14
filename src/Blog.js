@@ -11,12 +11,8 @@ function Blog(){
                    Object.entries(data).map(([key, value], index) => (
                      <Article key={key} attributes={value} position={index % 2 === 0 ? "left" : "right"}/>
                    ))
-                       
-                    
-                       
+                
                 }
-
-
             </div>
         </div>
     )
