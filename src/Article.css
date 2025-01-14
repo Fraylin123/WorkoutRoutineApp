@@ -1,0 +1,35 @@
+.articleContainer{
+    display:flex;
+    margin: 50px;
+}
+
+.textSection{
+    margin: 10px 20px;
+   
+   
+}
+
+.textSection span{
+    color: gray;
+}
+
+img{
+    margin:auto;
+}
+
+.textSection h2{
+    margin: 0;
+    margin-top: 5px;
+    
+}
+
+.textSection a{
+    color: gray;
+    text-decoration: underline;
+    cursor:pointer;
+}
+
+.textSection a:hover{
+    color: lightblue;
+}
+

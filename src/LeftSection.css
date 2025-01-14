@@ -38,6 +38,7 @@ form{
 
 form input{
     margin: 5px 0px;
+    border: 1px solid black;
 }
 
 .editContainer{

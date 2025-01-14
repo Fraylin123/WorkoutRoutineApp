@@ -30,7 +30,9 @@ h1{
 .childContainer{
     display:flex;
     flex-direction:column;
-    border: 1px black solid;
+  
+    border: 1px solid lightgray;
+    border-radius: 10px;
     width: 30%;
     margin: 5px;
     padding: 5px;
