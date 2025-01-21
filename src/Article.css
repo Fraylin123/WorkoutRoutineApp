@@ -21,12 +21,12 @@ img{
     
 }
 
-.textSection a{
+.textSection .readMore{
     color: gray;
     text-decoration: underline;
     cursor:pointer;
 }
 
-.textSection a:hover{
+.textSection .readMore:hover{
     color: lightblue;
 }

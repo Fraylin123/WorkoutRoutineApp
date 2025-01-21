@@ -9,12 +9,8 @@ function Article({attributes, position}){
                 <span>{attributes.date}</span>
                 <h2>{attributes.title}</h2>
                 <p>{attributes.description}</p>
-                <a>Read More</a>
+                <span className="readMore">Read More</span>
             </div>
-
-
-
-
         </div>
     )
 }
