@@ -7,6 +7,11 @@
     pointer-events: none;
   }
   
+
+  .root{
+    min-height: 100vh;
+  }
+  
   .routineType, .fitnessLevel{
     display:flex;
     justify-content: center;

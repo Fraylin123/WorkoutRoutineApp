@@ -10,6 +10,7 @@ import Footer from "./Footer.js"
 function App() {
   
     return (
+        <div className= "root">
         <Router>
             <Navigation />
             <Routes>
@@ -20,6 +21,7 @@ function App() {
             <Footer />
            
         </Router>
+        </div>
     )
 
 }
