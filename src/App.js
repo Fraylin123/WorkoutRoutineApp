@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from "./Home.js"
 import Browse from "./Browse.js"
 import Blog from "./Blog.js"
+import Footer from "./Footer.js"
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/WorkoutRoutineApp/browse" element = {<Browse />} />
                 <Route path="/WorkoutRoutineApp/blog" element = {<Blog />} />
             </Routes>
+            <Footer />
            
         </Router>
     )
