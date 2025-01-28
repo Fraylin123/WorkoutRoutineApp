@@ -1,0 +1,52 @@
+{
+    "article1": {
+        "title": "Lorem ipsum odor amet, consectetuer adipiscing elit.",
+        "date": "1.1.2024",
+        "img": {
+            "src":"https://medlineplus.gov/images/Nutrition_share.jpg",
+            "style": {"width": "40%" }
+        },
+        "description": "Lorem ipsum dolor sit amet. Eum temporibus nemo non magnam molestiae ab earum voluptas aut officiis reiciendis qui Quis facere eos consectetur autem. Rem nesciunt temporibus eum animi voluptas non architecto accusamus sit galisum reprehenderit."
+    },
+
+    "article2": {
+        "title": "Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore",
+        "date": "1.2.2024",
+        "img": {
+            "src":"https://www.cdc.gov/sleep/media/images/Sleep-WomanPeacefullySleeping-1217582444.jpg",
+            "style": {"width": "40%" }
+        },
+        "description": "Qui labore consequatur et accusamus libero est quasi explicabo ut internos molestias. Ab eius nemo a libero rerum aut sunt unde. Sit pariatur laudantium et sapiente officiis aut quia velit ab magnam sunt qui officiis voluptas."
+
+    },
+    "article3": {
+        "title": "Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation",
+        "date": "1.3.2024",
+        "img": {
+            "src":"https://embracingnutrition.co.uk/wp-content/uploads/2024/01/why-all-supplements-are-not-the-same-copy-1024x682.webp",
+            "style": {"width": "40%" }
+        },
+        "description": "Est earum nihil vel consectetur doloremque est laboriosam quas sed accusamus delectus sed beatae perspiciatis. Sit vitae nulla non sint eveniet a quos nisi. Qui atque accusamus non placeat facilis ex nobis iste aut sint ratione ea molestiae maxime in omnis dolor. Est provident similique et commodi perspiciatis 33 quia delectus qui voluptas consequatur est consectetur similique et nihil animi."
+        
+    },
+    "article4": {
+        "title": "Duis Aute Irure Dolor in Reprehenderit in Voluptate",
+        "date": "1.4.2024",
+        "img": {
+            "src":"https://hips.hearstapps.com/hmg-prod/images/young-man-running-outdoors-in-morning-royalty-free-image-1717693611.jpg",
+            "style": {"width": "40%" }
+        },
+        "description": "Ab omnis error et suscipit cumque quo ipsum dolore ea architecto commodi est nihil repudiandae qui unde itaque sed internos exercitationem. Qui fugit maxime et maiores ipsum in tempore optio et ratione consequatur. Sit delectus Quis est rerum modi id ullam dolorum."
+        
+    },
+    "article5": {
+        "title": "Excepteur Sint Occaecat Cupidatat Non Proident",
+        "date": "1.5.2024",
+        "img": {
+            "src":"https://www.mensjournal.com/.image/t_share/MTk2MTM3NDUxNzA0NzU1MzQ1/man-lifting-main.jpg",
+            "style": {"width": "40%" }
+        },
+        "description": "Et atque aspernatur qui autem aliquam qui quasi officiis. Ut quia quia aut labore voluptates aut voluptate reiciendis vel quae magni et ipsam dolor At dicta enim."
+        
+    }
+}

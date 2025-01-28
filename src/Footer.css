@@ -1,0 +1,25 @@
+footer{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items: center;
+    color:gray;
+    gap: 10px;
+    background-color:#E9E9E9;
+    margin-top: 40px;
+}
+
+footer .logos{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width:8%;
+    height:8%;
+}
+
+footer .logos img{
+    width: 25px;
+    height: 25px;
+}

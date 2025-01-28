@@ -1,0 +1,28 @@
+.displayResult{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align:center;
+    border: 2px gray inset;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin: 20px auto;
+    width: 52%;
+    padding: 0 3%;
+    
+    background-color: lightgray;
+    
+}
+
+.day{
+    padding: 0;
+
+}
+
+.copyClipboard{
+    cursor:pointer;
+  }
+
+ul{
+    text-align:left;
+}
