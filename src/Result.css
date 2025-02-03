@@ -1,28 +1,25 @@
-.displayResult{
-    display:flex;
+.displayResult {
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    text-align:center;
+    text-align: center;
     border: 2px gray inset;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     width: 52%;
     padding: 0 3%;
-    
     background-color: lightgray;
-    
 }
 
-.day{
+.day {
     padding: 0;
-
 }
 
-.copyClipboard{
-    cursor:pointer;
-  }
+.copyClipboard {
+    cursor: pointer;
+}
 
-ul{
-    text-align:left;
+ul {
+    text-align: left;
 }

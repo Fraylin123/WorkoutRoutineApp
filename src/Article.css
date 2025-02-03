@@ -1,32 +1,31 @@
-.articleContainer{
-    display:flex;
+.articleContainer {
+    display: flex;
     margin: 50px;
 }
 
-img{
-    margin:auto;
+img {
+    margin: auto;
 }
 
-.textSection{
+.textSection {
     margin: 10px 20px;
 }
 
-.textSection span{
+.textSection span {
     color: gray;
 }
 
-.textSection h2{
+.textSection h2 {
     margin: 0;
     margin-top: 5px;
-    
 }
 
-.textSection .readMore{
+.textSection .readMore {
     color: gray;
     text-decoration: underline;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.textSection .readMore:hover{
+.textSection .readMore:hover {
     color: lightblue;
 }

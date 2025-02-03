@@ -1,136 +1,120 @@
-.left{
+.left {
     margin: 5px 30px;
-    width:50%;
+    width: 50%;
     padding: 20px;
-   
-   
-    
 }
 
-form{
-    display:flex;
+form {
+    display: flex;
     flex-direction: column;
-    margin-left:5px
-    
+    margin-left: 5px
 }
 
-.autocomplete{
-    display:flex;
+.autocomplete {
+    display: flex;
     flex-direction: column;
-    width:76%;
+    width: 76%;
     margin-right: 2px;
-    position:relative;
-    
+    position: relative;
 }
 
-.autocomplete input{
+.autocomplete input {
     width: 98%;
 }
 
-
-.exerciseGroup{
+.exerciseGroup {
     display: flex;
     flex-direction: row;
     gap: 3px;
-   
 }
 
-
-form input{
+form input {
     margin: 5px 0px;
     border: 1px solid black;
 }
 
-.editContainer{
-    display:flex;
-    justify-content:start;  
-    width:20%;
+.editContainer {
+    display: flex;
+    justify-content: start;
+    width: 20%;
 }
 
-
-.editContainer img{
+.editContainer img {
     width: 2em;
     height: 2em;
 }
 
-.editContainer button{
-    border:none;
-    cursor:pointer;
-    appearance:none;
+.editContainer button {
+    border: none;
+    cursor: pointer;
+    appearance: none;
     background-color: inherit;
-    
 }
 
-.deleteExercise{
-    border:none;
-    cursor:pointer;
-    appearance:none;
+.deleteExercise {
+    border: none;
+    cursor: pointer;
+    appearance: none;
     background-color: inherit;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 30px;
 }
 
-
-.deleteExercise img{
+.deleteExercise img {
     width: 2em;
     height: 2em;
 }
 
-
-.exercises{
-    width:100%;
-    margin-right:2px;
-
-    
+.exercises {
+    width: 100%;
+    margin-right: 2px;
 }
 
-
-.sets, .reps{
-    width:6%;
+.sets,
+.reps {
+    width: 6%;
     margin: 0px 1px;
-    
 }
 
 .dropDown {
-    position:absolute;
-    top:100%;
+    position: absolute;
+    top: 100%;
     left: 0;
     z-index: 50;
     background-color: white;
-    display:flex;
+    display: flex;
     flex-direction: column;
     box-shadow: 0px 0px 8px 0px;
-    width:99%;
-    
+    width: 99%;
 }
 
-.dropdown-row{
+.dropdown-row {
     cursor: pointer;
     padding-left: 2px;
-    text-align:start;
+    text-align: start;
     margin: 1px 0;
 }
 
-.error{
+.error {
     border: 1px solid red;
 }
 
-@media only screen and (max-width: 600px){
-    .exerciseGroup{
-        display:flex;
+@media only screen and (max-width: 600px) {
+    .exerciseGroup {
+        display: flex;
         flex-direction: row;
-
     }
-    .left{
+
+    .left {
         margin: 0px 2px;
         width: 60%;
         padding: 0;
     }
-    .sets, .reps{
+
+    .sets,
+    .reps {
         width: 12%;
-       
     }
-   
 }

@@ -7,7 +7,6 @@ function Browse() {
     const [exerciseContainers, setExerciseContainers] = useState([])
     const [exerciseSearch, setExerciseSearch] = useState('')
 
-
     useEffect(() => {
         axios.get("http://localhost:5000/exercises")
             .then((response) => {
@@ -46,9 +45,7 @@ function Browse() {
                             <span>Type: {currExercise.type}</span>
                         </div>
                     ))
-
                 }
-
             </div>
         </div>
     )

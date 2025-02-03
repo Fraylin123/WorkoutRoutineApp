@@ -5,20 +5,19 @@ import LeftSection from './LeftSection.js'
 import Result from "./Result.js"
 import { useState, useEffect } from "react";
 
-function Home(){
+function Home() {
     const [routineValues, setRoutineValues] = useState([false, false, false]);
     const [fitnessValues, setFitnessValues] = useState([false, false, false]);
-    const [days, setDays] = useState([])
+    const [days, setDays] = useState([]);
     const [data, setData] = useState([{}, {}, {}, {}, {}, {}, {}]);
-    const [exerciseJSON, setExerciseJSON] = useState([])
-    const [errors, setErrors] = useState({})
-    const [buttonClicked, setButtonClicked] = useState(false)
+    const [exerciseJSON, setExerciseJSON] = useState([]);
+    const [errors, setErrors] = useState({});
+    const [buttonClicked, setButtonClicked] = useState(false);
 
     const handleRoutineClick = (index) => {
         setRoutineValues((prev) => {
             return prev.map((_, i) => i === index);
         });
-
     }
 
     const handleFitnessClick = (index) => {
@@ -89,12 +88,10 @@ function Home(){
         }))
     }
 
-
-
     //If it's a rest day, delete it so that it doesnt render
     useEffect(() => {
         const generateUniqueDays = (daysArray) => {
-            const timestamp = Date.now(); 
+            const timestamp = Date.now();
             return daysArray.map((day, index) => ({ name: day, id: `${day}-${timestamp}-${index}` }));
         };
 
@@ -117,7 +114,6 @@ function Home(){
         }
     }, [routineValues, fitnessValues]);
 
-
     useEffect(() => {
         setExerciseJSON((prev) => {
             const resetJSON = [...prev]
@@ -125,10 +121,9 @@ function Home(){
         });
     }, [days]);
 
-
-    return(
+    return (
         <div className="root">
-         <h1 style={{ textAlign: 'center' }}>Workout Routine App</h1>
+            <h1 style={{ textAlign: 'center' }}>Workout Routine App</h1>
             <div className='routineType'>
                 <button onClick={() => handleRoutineClick(0)} style={{ backgroundColor: routineValues[0] ? 'gray' : 'black' }}>PPL</button>
                 <button onClick={() => handleRoutineClick(1)} style={{ backgroundColor: routineValues[1] ? 'gray' : 'black' }}>Upper Lower</button>
