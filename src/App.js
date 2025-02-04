@@ -5,9 +5,12 @@ import Browse from "./Browse.js"
 import Blog from "./Blog.js"
 import Footer from "./Footer.js"
 
+import { WorkoutProvider } from './WorkoutContext.js';
+
 function App() {
     return (
         <div className="root">
+            <WorkoutProvider>
             <Router>
                 <Navigation />
                 <Routes>
@@ -18,6 +21,7 @@ function App() {
                 <Footer />
 
             </Router>
+            </WorkoutProvider>
         </div>
     )
 
