@@ -4,12 +4,21 @@ import './LeftSection.css'
 import plusIcon from "./icons/plus.png"
 import penIcon from "./icons/pen.png"
 import minusIcon from "./icons/minus.png"
+import { WorkoutContext } from './WorkoutContext'
+import {useContext} from 'react'
 /*Add the icons in the edit div*/
+
+
 function LeftSection({ setData, setJSON, day, errors, setErrors, setButtonClicked }) {
-    const [exercises, setExercise] = useState([{ id: 1, name: "", sets: "", reps: "" }, { id: 2, name: "", sets: "", reps: "" }, { id: 3, name: "", sets: "", reps: "" }, { id: 4, name: "", sets: "", reps: "" }, { id: 5, name: "", sets: "", reps: "" }]);
-    const [editMode, setEditMode] = useState(false);
-    const [exercisesList, setExercisesList] = useState([]);
-    const [currentDropdown, setCurrentDropdown] = useState(null);
+    const {
+        editMode, setEditMode,
+        exercisesList, setExercisesList,
+        currentDropdown, setCurrentDropdown,
+        exerciseJSON
+    } = useContext(WorkoutContext);
+
+    const [exercises, setExercise] = useState(exerciseJSON.find(item => item.day === day.name)?.exercises || [{ id: 1, name: "", sets: "", reps: "" }, { id: 2, name: "", sets: "", reps: "" }, { id: 3, name: "", sets: "", reps: "" }, { id: 4, name: "", sets: "", reps: "" }, { id: 5, name: "", sets: "", reps: "" }]);
+    
 
     useEffect(() => {
         axios.get("http://localhost:5000/exercises")
