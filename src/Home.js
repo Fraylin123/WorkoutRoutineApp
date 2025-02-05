@@ -4,15 +4,20 @@ import RightSection from './RightSection.js'
 import LeftSection from './LeftSection.js'
 import Result from "./Result.js"
 import { useState, useEffect } from "react";
+import {useContext} from 'react';
+import {WorkoutContext} from './WorkoutContext.js'
 
 function Home() {
-    const [routineValues, setRoutineValues] = useState([false, false, false]);
-    const [fitnessValues, setFitnessValues] = useState([false, false, false]);
-    const [days, setDays] = useState([]);
-    const [data, setData] = useState([{}, {}, {}, {}, {}, {}, {}]);
-    const [exerciseJSON, setExerciseJSON] = useState([]);
-    const [errors, setErrors] = useState({});
-    const [buttonClicked, setButtonClicked] = useState(false);
+    const {
+        routineValues, setRoutineValues,
+        fitnessValues, setFitnessValues,
+        days, setDays,
+        exerciseData, setExerciseData,
+        exerciseJSON, setExerciseJSON,
+        errors, setErrors,
+        buttonClicked, setButtonClicked
+    } = useContext(WorkoutContext);
+    
 
     const handleRoutineClick = (index) => {
         setRoutineValues((prev) => {
@@ -22,13 +27,12 @@ function Home() {
 
     const handleFitnessClick = (index) => {
         setFitnessValues((prev) => prev.map((_, i) => i === index))
-
     }
 
     const updateData = (index, exercise) => {
-        const newData = [...data]
+        const newData = [...exerciseData]
         newData[index] = exercise
-        setData(newData)
+        setExerciseData(newData)
     }
 
     const updateExerciseJSON = (index, item) => {
@@ -143,8 +147,8 @@ function Home() {
                     <div key={index}>
                         <h3>{currDay.name}</h3>
                         <div className="pairedContainer">
-                            <LeftSection setData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)} day={currDay} errors={errors[index] || []} setErrors={(item) => sendArray(index, item)} setButtonClicked={setButtonClicked} />
-                            <RightSection data={data[index]} />
+                            <LeftSection setExerciseData={(value) => updateData(index, value)} day={currDay} errors={errors[index] || []} setErrors={(item) => sendArray(index, item)} setButtonClicked={setButtonClicked} />
+                            <RightSection data={exerciseData[index]} />
                         </div>
                     </div>
 
