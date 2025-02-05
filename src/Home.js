@@ -147,7 +147,7 @@ function Home() {
                     <div key={index}>
                         <h3>{currDay.name}</h3>
                         <div className="pairedContainer">
-                            <LeftSection setExerciseData={(value) => updateData(index, value)} day={currDay} errors={errors[index] || []} setErrors={(item) => sendArray(index, item)} setButtonClicked={setButtonClicked} />
+                            <LeftSection setExerciseData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)} day={currDay} errors={errors[index] || []} setErrors={(item) => sendArray(index, item)} setButtonClicked={setButtonClicked} />
                             <RightSection data={exerciseData[index]} />
                         </div>
                     </div>

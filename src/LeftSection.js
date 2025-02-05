@@ -9,7 +9,7 @@ import {useContext} from 'react'
 /*Add the icons in the edit div*/
 
 
-function LeftSection({ setData, setJSON, day, errors, setErrors, setButtonClicked }) {
+function LeftSection({ setExerciseData, setJSON, day, errors, setErrors, setButtonClicked }) {
     const {
         editMode, setEditMode,
         exercisesList, setExercisesList,
@@ -52,13 +52,14 @@ function LeftSection({ setData, setJSON, day, errors, setErrors, setButtonClicke
             setErrors(errors.map((item) => item.id === id ? { ...item, [property]: false } : item))
         }
         setButtonClicked(false)
+        setEditMode(false)
     }
 
     const handleClickExercise = (id, newValue) => {
         const updatedExercisesList = exercises.map((exercise) => exercise.id === id ? { ...exercise, name: newValue } : exercise);
         setExercise(updatedExercisesList);
         setCurrentDropdown(null)
-        setData(newValue);
+        setExerciseData(newValue);
     }
 
     const handleClick = () => {
