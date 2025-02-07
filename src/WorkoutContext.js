@@ -1,4 +1,5 @@
 import {useState, createContext} from 'react'
+import axios from 'axios'
 
 export const WorkoutContext = createContext();
 
@@ -14,10 +15,12 @@ export const WorkoutProvider = ({children}) => {
     const [buttonClicked, setButtonClicked] = useState(false);
 
     //Left.js Values
-
     const [editMode, setEditMode] = useState(false);
     const [exercisesList, setExercisesList] = useState([]);
     const [currentDropdown, setCurrentDropdown] = useState(null);
+
+    //Browse.js values
+    const [exerciseContainers, setExerciseContainers] = useState([])
 
 
     return (
@@ -31,7 +34,7 @@ export const WorkoutProvider = ({children}) => {
           
             editMode, setEditMode,
             exercisesList, setExercisesList,
-            currentDropdown, setCurrentDropdown}}>
+            currentDropdown, setCurrentDropdown, exerciseContainers, setExerciseContainers}}>
 
             {children}
         </WorkoutContext.Provider>
