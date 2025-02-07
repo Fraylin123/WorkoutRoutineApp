@@ -34,7 +34,8 @@ export const WorkoutProvider = ({children}) => {
           
             editMode, setEditMode,
             exercisesList, setExercisesList,
-            currentDropdown, setCurrentDropdown, exerciseContainers, setExerciseContainers}}>
+            currentDropdown, setCurrentDropdown, 
+            exerciseContainers, setExerciseContainers}}>
 
             {children}
         </WorkoutContext.Provider>

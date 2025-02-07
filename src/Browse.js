@@ -6,8 +6,18 @@ import {useContext} from 'react';
 import {WorkoutContext} from './WorkoutContext.js'
 
 function Browse() {
-    const [exerciseContainers] = useContext(WorkoutContext)
+    const [exerciseContainers, setExerciseContainers] = useContext(WorkoutContext)
     const [exerciseSearch, setExerciseSearch] = useState('')
+
+    useEffect(() => {
+        axios.get("http://localhost:5000/exercises")
+            .then((response) => {
+                setExerciseContainers(response.data);
+            })
+            .catch((error) => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
 
     const handleSearch = (newVal) => {
         setExerciseSearch(newVal);
