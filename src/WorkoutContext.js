@@ -15,12 +15,13 @@ export const WorkoutProvider = ({children}) => {
     const [buttonClicked, setButtonClicked] = useState(false);
 
     //Left.js Values
-    const [editMode, setEditMode] = useState(false);
+    
     const [exercisesList, setExercisesList] = useState([]);
     const [currentDropdown, setCurrentDropdown] = useState(null);
 
     //Browse.js values
-    const [exerciseContainers, setExerciseContainers] = useState([])
+    const [exerciseContainers, setExerciseContainers] = useState([]);
+    const [exerciseSearch, setExerciseSearch] = useState('');
 
 
     return (
@@ -32,10 +33,10 @@ export const WorkoutProvider = ({children}) => {
             errors, setErrors,
             buttonClicked, setButtonClicked,
           
-            editMode, setEditMode,
             exercisesList, setExercisesList,
             currentDropdown, setCurrentDropdown, 
-            exerciseContainers, setExerciseContainers}}>
+            exerciseContainers, setExerciseContainers,
+            exerciseSearch, setExerciseSearch}}>
 
             {children}
         </WorkoutContext.Provider>

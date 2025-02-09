@@ -4,6 +4,10 @@ h1 {
 
 }
 
+
+.browse-main{
+    min-height: 100vh;
+}
 .searchBar input {
     border-radius: 5px;
     width: 90%;

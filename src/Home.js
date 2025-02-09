@@ -64,6 +64,14 @@ function Home() {
                         reps: !exercise.reps,
                     }
                 }
+                if (exercise.name && exercise.sets && exercise.reps) {
+                    exerciseErrors[exerciseIndex] = {
+                        id: exercise.id,
+                        name: !exercise.name,
+                        sets: !exercise.sets,
+                        reps: !exercise.reps,
+                    }
+                }
 
             })
             if (Object.keys(exerciseErrors).length > 0) {
@@ -82,6 +90,7 @@ function Home() {
         }
         else {
             alert("There are errors, please fix")
+            console.log("main errs",errors)
         }
     }
 
@@ -126,7 +135,7 @@ function Home() {
     }, [days]);
 
     return (
-        <div className="root">
+        <div className="main">
             <h1 style={{ textAlign: 'center' }}>Workout Routine App</h1>
             <div className='routineType'>
                 <button onClick={() => handleRoutineClick(0)} style={{ backgroundColor: routineValues[0] ? 'gray' : 'black' }}>PPL</button>

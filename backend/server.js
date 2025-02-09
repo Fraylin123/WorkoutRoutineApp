@@ -28,7 +28,6 @@ const exerciseSchema = new mongoose.Schema({
 
 const Exercise = mongoose.model('Exercise', exerciseSchema);
 
-
 //APIs Routes
 app.get('/exercises', async (req, res) => {
     try {
@@ -38,7 +37,6 @@ app.get('/exercises', async (req, res) => {
         res.status(500).json({ err: 'Error fetching exercises' });
     }
 });
-
 
 app.get('/exercises/:name', async (req, res) => {
     try {

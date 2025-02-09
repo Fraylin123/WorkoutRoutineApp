@@ -6,17 +6,19 @@ import {useContext} from 'react';
 import {WorkoutContext} from './WorkoutContext.js'
 
 function Browse() {
-    const [exerciseContainers, setExerciseContainers] = useContext(WorkoutContext)
-    const [exerciseSearch, setExerciseSearch] = useState('')
+    const {exerciseContainers, setExerciseContainers} = useContext(WorkoutContext)
+    const {exerciseSearch, setExerciseSearch} = useContext(WorkoutContext)
 
     useEffect(() => {
-        axios.get("http://localhost:5000/exercises")
-            .then((response) => {
-                setExerciseContainers(response.data);
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            });
+        if (exerciseContainers.length == 0) {
+            axios.get("http://localhost:5000/exercises")
+                .then((response) => {
+                    setExerciseContainers(response.data);
+                })
+                .catch((error) => {
+                    console.error("Error fetching data:", error);
+                });
+            }
     }, []);
 
     const handleSearch = (newVal) => {
@@ -24,10 +26,10 @@ function Browse() {
     }
 
     return (
-        <div>
+        <div className = "browse-main">
             <h1>Exercise Browser</h1>
             <div className="searchBar">
-                <input type="text" placeholder="Search" onChange={(e) => handleSearch(e.target.value)}></input>
+                <input type="text" placeholder="Search" onChange={(e) => handleSearch(e.target.value)} value = {exerciseSearch}></input>
             </div>
 
             <div className="searchResults">
