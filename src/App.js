@@ -4,6 +4,7 @@ import Home from "./Home.js"
 import Browse from "./Browse.js"
 import Blog from "./Blog.js"
 import Footer from "./Footer.js"
+import UserAuth from './UserAuth.js';
 
 import { WorkoutProvider } from './WorkoutContext.js';
 
