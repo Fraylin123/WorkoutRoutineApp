@@ -1,0 +1,57 @@
+.user-authentication-container{
+    display:flex;
+    flex-direction: column;
+    background-color: white;
+    padding-bottom: 100px;
+
+}
+
+.user-heading{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    width:100%;
+    margin-top: 30px;
+}
+
+
+.user-heading span{
+    color: black;
+    font-size: 48px;
+    font-weight: 700;
+
+}
+
+.underline{
+    width: 100px;
+    height: 5px;
+    border-radius: 20px;
+    background: black;
+}
+
+.inputs{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.input{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 480px;
+    height: 80px;
+    background: white;
+    border-radius: 10px;
+}
+
+.input input{
+    height: 50px;
+    width: 400px;
+    background: transparent;
+
+    outline: none;
+    font-size: 19px;
+}

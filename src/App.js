@@ -15,7 +15,8 @@ function App() {
             <Router>
                 <Navigation />
                 <Routes>
-                    <Route path="/WorkoutRoutineApp" element={<Home />} />
+                    <Route path="/WorkoutRoutineApp" element={<UserAuth />} />
+                    <Route path="/WorkoutRoutineApp/Home" element={<Home />} />
                     <Route path="/WorkoutRoutineApp/browse" element={<Browse />} />
                     <Route path="/WorkoutRoutineApp/blog" element={<Blog />} />
                 </Routes>
