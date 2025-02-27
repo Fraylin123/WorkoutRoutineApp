@@ -1,11 +1,19 @@
 import { useState, useEffect } from "react";
 import "./UserAuth.css"
 function UserAuth(){
-    const [status, setStatus] = useState("Login")
+    const [status, setStatus] = useState("Sign in")
+    const [alternate, setAlternate] = useState("Sign up")
 
     const handleStatus = (event) => {
         event.preventDefault()
-        console.log(event.target.textContent)
+   
+        if (event.target.textContent === "Sign up"){
+            if (alternate !== "Sign in")
+                setAlternate("Sign in")
+        }
+        else{
+            setAlternate("Sign up")
+        }
         setStatus(event.target.textContent)
     }
 
@@ -15,7 +23,7 @@ function UserAuth(){
         <div className="authMain">
             <form className="user-authentication-container">
                 <div className="user-heading">
-                    <span>{status == "Login" ? "Sign in" : "Sign up"}</span>
+                    <span>{status == "Sign in" ? "Sign in" : "Sign up"}</span>
                     <div className="underline"></div>
                     </div>
                 <div className="inputs">
@@ -40,11 +48,11 @@ function UserAuth(){
                     
                 </div>
                 <div className = "submit-container">
-                    <button onClick={(event) => handleStatus(event)}>Login</button>
+                    <button onClick={(event) => handleStatus(event)}>{status}</button>
                     
                 </div>
                 <div className="sign-up">
-                        <button onClick={(event) => handleStatus(event)}>Sign up</button>
+                        <button onClick={(event) => handleStatus(event)}>{alternate}</button>
                     </div>
                 
             </form>
