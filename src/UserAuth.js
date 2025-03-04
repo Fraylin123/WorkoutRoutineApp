@@ -3,7 +3,9 @@ import "./UserAuth.css"
 function UserAuth(){
     const [status, setStatus] = useState("Sign in")
     const [alternate, setAlternate] = useState("Sign up")
-
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    
     const handleStatus = (event) => {
         event.preventDefault()
    
@@ -16,6 +18,15 @@ function UserAuth(){
         }
         setStatus(event.target.textContent)
     }
+
+    /*
+    const handleSubmit = async(event) => {
+        e.preventDefault()
+
+    }
+    */
+   
+    
 
 
 

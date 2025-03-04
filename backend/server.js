@@ -11,20 +11,34 @@ const jws = require('jsonwebtoken')
 
 
 const app = express();
-const port =  5000;
+const port = 5000;
 
 app.use(cors());
 app.use(express.json());
 //SQL Connection
-const accountsDb = mysql.createConnection({})
+const accountsDb = mysql.createConnection({
+    host: process.env.cHost,
+    user: process.env.cUser,
+    password: process.env.cPassword,
+    database: process.env.cDatabase
+});
+
+accountsDb.connect((error) => {
+    if (error) {
+        console.error("Connection error:", error)
+    }
+    else{
+        console.log("Succesful connection")
+    }
+})
 
 //MongoDB connection
 mongoose.connect(process.env.MongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
-.then(() => console.log('Connected to MongoDB Atlas'))
-.catch(err => console.error('Error connecting to MongoDB Atlas:', err));
+    .then(() => console.log('Connected to MongoDB Atlas'))
+    .catch(err => console.error('Error connecting to MongoDB Atlas:', err));
 
 const exerciseSchema = new mongoose.Schema({
     _id: String,
@@ -60,5 +74,11 @@ app.get('/exercises/:name', async (req, res) => {
         res.status(500).json({ error: 'Error fetching exercise' });
     }
 });
+
+app.post('/register', async (req, res) => {
+    const {username, email, password} = req.body;
+    
+
+})
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
