@@ -1,14 +1,24 @@
+//Env variables
 require('dotenv').config()
+
+//Dependecies
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const mysql = require('mysql2')
+const bcrypt = require('bcryptjs')
+const jws = require('jsonwebtoken')
+
 
 const app = express();
 const port =  5000;
 
 app.use(cors());
 app.use(express.json());
+//SQL Connection
+const accountsDb = mysql.createConnection({})
 
+//MongoDB connection
 mongoose.connect(process.env.MongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
