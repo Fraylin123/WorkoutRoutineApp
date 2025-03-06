@@ -1,10 +1,9 @@
-import {useState, createContext} from 'react'
-import axios from 'axios'
+import { useState, createContext } from 'react'
+//import axios from 'axios'
 
 export const WorkoutContext = createContext();
 
-
-export const WorkoutProvider = ({children}) => {
+export const WorkoutProvider = ({ children }) => {
     //Home.js values
     const [routineValues, setRoutineValues] = useState([false, false, false]);
     const [fitnessValues, setFitnessValues] = useState([false, false, false]);
@@ -15,7 +14,6 @@ export const WorkoutProvider = ({children}) => {
     const [buttonClicked, setButtonClicked] = useState(false);
 
     //Left.js Values
-    
     const [exercisesList, setExercisesList] = useState([]);
     const [currentDropdown, setCurrentDropdown] = useState(null);
 
@@ -23,24 +21,22 @@ export const WorkoutProvider = ({children}) => {
     const [exerciseContainers, setExerciseContainers] = useState([]);
     const [exerciseSearch, setExerciseSearch] = useState('');
 
-
     return (
-        <WorkoutContext.Provider value = {{routineValues, setRoutineValues,
+        <WorkoutContext.Provider value={{
+            routineValues, setRoutineValues,
             fitnessValues, setFitnessValues,
             days, setDays,
             exerciseData, setExerciseData,
             exerciseJSON, setExerciseJSON,
             errors, setErrors,
             buttonClicked, setButtonClicked,
-          
-            exercisesList, setExercisesList,
-            currentDropdown, setCurrentDropdown, 
-            exerciseContainers, setExerciseContainers,
-            exerciseSearch, setExerciseSearch}}>
 
+            exercisesList, setExercisesList,
+            currentDropdown, setCurrentDropdown,
+            exerciseContainers, setExerciseContainers,
+            exerciseSearch, setExerciseSearch
+        }}>
             {children}
         </WorkoutContext.Provider>
     )
-
-
 }

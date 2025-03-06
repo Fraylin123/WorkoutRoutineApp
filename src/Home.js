@@ -3,10 +3,11 @@ import './Home.css';
 import RightSection from './RightSection.js'
 import LeftSection from './LeftSection.js'
 import Result from "./Result.js"
-import { useState, useEffect } from "react";
-import {useContext} from 'react';
-import {WorkoutContext} from './WorkoutContext.js'
+import { useEffect } from "react";
+import { useContext } from 'react';
+import { WorkoutContext } from './WorkoutContext.js'
 
+//Component for the Home section
 function Home() {
     const {
         routineValues, setRoutineValues,
@@ -17,7 +18,6 @@ function Home() {
         errors, setErrors,
         buttonClicked, setButtonClicked
     } = useContext(WorkoutContext);
-    
 
     const handleRoutineClick = (index) => {
         setRoutineValues((prev) => {
@@ -44,12 +44,12 @@ function Home() {
     }
 
     const inputValidation = () => {
-        console.log("calling inputValidation")
+        //console.log("calling inputValidation")
         const newErrors = {};
         let hasError = false;
         exerciseJSON.forEach((dayData, dayIndex) => {
             if (!dayData || dayData.exercises.length === 0) {
-                console.log("Correct condition")
+                //console.log("Correct condition")
                 return
 
             }; //Pre-check
@@ -84,13 +84,13 @@ function Home() {
     }
 
     const handleSaveClick = () => {
-        console.log(exerciseJSON)
+        //console.log(exerciseJSON)
         if (inputValidation()) {
             setButtonClicked(true)
         }
         else {
             alert("There are errors, please fix")
-            console.log("main errs",errors)
+            //console.log("main errs", errors)
         }
     }
 
@@ -142,6 +142,7 @@ function Home() {
                 <button onClick={() => handleRoutineClick(1)} style={{ backgroundColor: routineValues[1] ? 'gray' : 'black' }}>Upper Lower</button>
                 <button onClick={() => handleRoutineClick(2)} style={{ backgroundColor: routineValues[2] ? 'gray' : 'black' }}>Bro Split</button>
             </div>
+
             {routineValues.some(value => value === true) && (
                 <div className="fitnessLevel">
                     <button onClick={() => handleFitnessClick(0)} style={{ backgroundColor: fitnessValues[0] ? 'gray' : 'black' }}>Beginner</button>
@@ -164,6 +165,7 @@ function Home() {
                 ))
                 }
             </div>
+
             {fitnessValues.some(value => value === true) &&
                 <div className='submit'>
                     <button onClick={() => handleSaveClick()}>Save</button>
@@ -172,12 +174,10 @@ function Home() {
 
             {buttonClicked &&
                 <Result exerciseData={exerciseJSON} />
-
             }
 
         </div>
     )
-
 }
 
 export default Home;

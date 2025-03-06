@@ -3,6 +3,7 @@ import "./Footer.css"
 import linkedIn from "./icons/linkedin.png"
 import gitHub from "./icons/github.png"
 
+//Component for the footer of the web app
 function Footer() {
     return (
         <footer>
@@ -12,8 +13,6 @@ function Footer() {
             </div>
             <p>© 2025 Fraylin Ayala</p>
         </footer>
-
-
     )
 }
 

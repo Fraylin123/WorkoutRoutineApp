@@ -1,7 +1,7 @@
 import "./Article.css"
 
+//Component for the individual articles in the blog section
 function Article({ attributes, position }) {
-
     return (
         <div className="articleContainer" style={{ flexDirection: position === "left" ? "row" : "row-reverse" }}>
             <img src={attributes.img.src} style={attributes.img.style} alt="fillerImage" />

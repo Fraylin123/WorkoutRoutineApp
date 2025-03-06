@@ -5,21 +5,18 @@ import plusIcon from "./icons/plus.png"
 import penIcon from "./icons/pen.png"
 import minusIcon from "./icons/minus.png"
 import { WorkoutContext } from './WorkoutContext'
-import {useContext} from 'react'
-/*Add the icons in the edit div*/
+import { useContext } from 'react'
 
-
+//Component for the left part of the Home section (inner Home.js component)
 function LeftSection({ setExerciseData, setJSON, day, errors, setErrors, setButtonClicked }) {
     const {
-       
         exercisesList, setExercisesList,
         currentDropdown, setCurrentDropdown,
         exerciseJSON
     } = useContext(WorkoutContext);
-    const [editMode, setEditMode] = useState(false);
 
+    const [editMode, setEditMode] = useState(false);
     const [exercises, setExercise] = useState(exerciseJSON.find(item => item.day === day.name)?.exercises || [{ id: 1, name: "", sets: "", reps: "" }, { id: 2, name: "", sets: "", reps: "" }, { id: 3, name: "", sets: "", reps: "" }, { id: 4, name: "", sets: "", reps: "" }, { id: 5, name: "", sets: "", reps: "" }]);
-    
 
     useEffect(() => {
         axios.get("http://localhost:5000/exercises")
@@ -49,7 +46,7 @@ function LeftSection({ setExerciseData, setJSON, day, errors, setErrors, setButt
             setExercise(updatedExercisesList);
         }
 
-        if (newValue.trim() !== "" ) {
+        if (newValue.trim() !== "") {
             setErrors(errors.map((item) => item.id === id ? { ...item, [property]: false } : item))
         }
         setButtonClicked(false)
@@ -94,7 +91,7 @@ function LeftSection({ setExerciseData, setJSON, day, errors, setErrors, setButt
                         <label>{"Exercise " + (index + 1) + ":"}</label>
                         <div className="exerciseGroup">
                             <div className="autocomplete">
-                                <input type="text" placeholder="Type exercise" className={`exercises ${errors[index]?.name ? "error" : ""}`} onChange={(event) => handleExercise(exercise.id, "name", event.target.value)} value={exercise.name} onFocus={() => setCurrentDropdown(exercise.id)}/>
+                                <input type="text" placeholder="Type exercise" className={`exercises ${errors[index]?.name ? "error" : ""}`} onChange={(event) => handleExercise(exercise.id, "name", event.target.value)} value={exercise.name} onFocus={() => setCurrentDropdown(exercise.id)} />
                                 <div className='dropDown'>
                                     {currentDropdown === exercise.id &&
                                         exercisesList.filter((item) => {
@@ -121,7 +118,6 @@ function LeftSection({ setExerciseData, setJSON, day, errors, setErrors, setButt
 
                 ))}
             </form>
-
         </div>
     )
 }

@@ -1,10 +1,9 @@
-.authMain{
+.authMain {
     background-color: white;
     min-height: 90vh;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .user-authentication-container {
@@ -16,9 +15,6 @@
     max-width: 500px;
     min-height: 100px;
     background-color: #ECEFF1;
-    
- 
-
 }
 
 .user-heading {
@@ -26,7 +22,6 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
-  
 }
 
 
@@ -34,7 +29,6 @@
     color: black;
     font-size: 40px;
     font-weight: 700;
-
 }
 
 .underline {
@@ -61,12 +55,11 @@
     padding-left: 5px;
 }
 
-.submit-container{
+.submit-container {
     display: flex;
     width: 400px;
     justify-content: center;
-    flex-direction:column;
-    
+    flex-direction: column;
 }
 
 .submit-container button {
@@ -78,18 +71,16 @@
     border: 1px solid black;
     width: 100%;
     cursor: pointer;
-
 }
 
-.sign-up{
+.sign-up {
     display: flex;
     justify-content: start;
     flex-direction: row;
- 
-    width:400px;
+    width: 400px;
 }
 
-.sign-up button{
+.sign-up button {
     margin-top: 10px;
     font-size: 15px;
     color: darkgray;
@@ -97,8 +88,5 @@
     outline: none;
     border: none;
     padding: 10px;
-   
     cursor: pointer
-    
 }
-    

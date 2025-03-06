@@ -1,13 +1,12 @@
 h1 {
     text-align: center;
     margin-top: 30px;
-
 }
 
-
-.browse-main{
+.browse-main {
     min-height: 100vh;
 }
+
 .searchBar input {
     border-radius: 5px;
     width: 90%;
@@ -26,23 +25,19 @@ h1 {
     justify-content: center;
     flex-wrap: wrap;
     margin: 2% 3%;
-
 }
 
 .childContainer {
     display: flex;
     flex-direction: column;
-
     border: 1px solid lightgray;
     border-radius: 10px;
     width: 30%;
     margin: 5px;
     padding: 5px;
     font-family: 'Helvetica', 'Arial', 'Sans-serif'
-
 }
 
 .childContainer span {
     padding: 5px 2px;
-
 }

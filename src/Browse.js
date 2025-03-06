@@ -1,13 +1,14 @@
 import "./Browse.css";
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Video from './Video'
-import {useContext} from 'react';
-import {WorkoutContext} from './WorkoutContext.js'
+import { useContext } from 'react';
+import { WorkoutContext } from './WorkoutContext.js'
 
+//Component for the Browse section
 function Browse() {
-    const {exerciseContainers, setExerciseContainers} = useContext(WorkoutContext)
-    const {exerciseSearch, setExerciseSearch} = useContext(WorkoutContext)
+    const { exerciseContainers, setExerciseContainers } = useContext(WorkoutContext)
+    const { exerciseSearch, setExerciseSearch } = useContext(WorkoutContext)
 
     useEffect(() => {
         if (exerciseContainers.length == 0) {
@@ -18,7 +19,7 @@ function Browse() {
                 .catch((error) => {
                     console.error("Error fetching data:", error);
                 });
-            }
+        }
     }, []);
 
     const handleSearch = (newVal) => {
@@ -26,12 +27,11 @@ function Browse() {
     }
 
     return (
-        <div className = "browse-main">
+        <div className="browse-main">
             <h1>Exercise Browser</h1>
             <div className="searchBar">
-                <input type="text" placeholder="Search" onChange={(e) => handleSearch(e.target.value)} value = {exerciseSearch}></input>
+                <input type="text" placeholder="Search" onChange={(e) => handleSearch(e.target.value)} value={exerciseSearch}></input>
             </div>
-
             <div className="searchResults">
                 {
                     exerciseContainers.filter((item) => {

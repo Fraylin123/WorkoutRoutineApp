@@ -2,9 +2,8 @@ import React from 'react'
 import './RightSection.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-//import example from './example.gif'
 
-
+//Component for the right part of the Home section (inner Home.js component)
 function RightSection({ data }) {
     const [exerciseVid, setExerciseVid] = useState('')
     useEffect(() => {
@@ -22,7 +21,6 @@ function RightSection({ data }) {
     }, [data]);
 
     let renderContent;
-
     if (data.length > 0 && exerciseVid != "https://www.youtube.com/embed/None") {
         renderContent = (<iframe src={exerciseVid} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>);
     }

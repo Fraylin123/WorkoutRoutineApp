@@ -12,17 +12,17 @@ function App() {
     return (
         <div className="root">
             <WorkoutProvider>
-            <Router>
-                <Navigation />
-                <Routes>
-                    <Route path="/WorkoutRoutineApp" element={<UserAuth />} />
-                    <Route path="/WorkoutRoutineApp/Home" element={<Home />} />
-                    <Route path="/WorkoutRoutineApp/browse" element={<Browse />} />
-                    <Route path="/WorkoutRoutineApp/blog" element={<Blog />} />
-                </Routes>
-                <Footer />
+                <Router>
+                    <Navigation />
+                    <Routes>
+                        <Route path="/WorkoutRoutineApp" element={<UserAuth />} />
+                        <Route path="/WorkoutRoutineApp/Home" element={<Home />} />
+                        <Route path="/WorkoutRoutineApp/browse" element={<Browse />} />
+                        <Route path="/WorkoutRoutineApp/blog" element={<Blog />} />
+                    </Routes>
+                    <Footer />
 
-            </Router>
+                </Router>
             </WorkoutProvider>
         </div>
     )

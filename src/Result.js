@@ -1,9 +1,8 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import './Result.css'
 
+//Component for the formatted workout routine after user fills out inputs (inner Home.js component)
 function Result({ exerciseData }) {
-    const resultRef = useRef(null)
-
     const copyToClipboard = () => {
         const copyText = exerciseData.map((dayData) => `${dayData.day}\n` + dayData.exercises.map((exercise) => `• ${exercise.name}: ${exercise.sets}x${exercise.reps}`).join("\n")
         ).join("\n\n");
@@ -25,14 +24,10 @@ function Result({ exerciseData }) {
                                 ))
                             }
                         </ul>
-
                     </div>
-
                 ))
             }
             <button onClick={copyToClipboard} className="copyClipboard">Copy</button>
-
-
         </div>
     )
 }
