@@ -9,7 +9,6 @@ function Navigation() {
             <Link to="/WorkoutRoutineApp/browse">Browse</Link>
             <Link to="/WorkoutRoutineApp/blog">Blog</Link>
         </div>
-
     )
 }
 
