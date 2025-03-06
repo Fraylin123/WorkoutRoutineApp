@@ -4,7 +4,7 @@ Front-end:
 React.js
 
 Backend:
-Node.js - Web server
-Express.js - To establish routes
-MongoDB - For static scraped exercise data
+Node.js - Web server<br>
+Express.js - To establish routes<br>
+MongoDB - For static scraped exercise data<br>
 MySQL - For storing user information and handle user authentication
