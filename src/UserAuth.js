@@ -58,6 +58,7 @@ function UserAuth() {
                     <button onClick={(event) => handleStatus(event)}>{status}</button>
 
                 </div>
+                
                 <div className="sign-up">
                     <button onClick={(event) => handleStatus(event)}>{alternate}</button>
                 </div>

@@ -175,7 +175,6 @@ function Home() {
             {buttonClicked &&
                 <Result exerciseData={exerciseJSON} />
             }
-
         </div>
     )
 }

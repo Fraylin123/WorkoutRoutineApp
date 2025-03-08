@@ -26,7 +26,6 @@ function App() {
             </WorkoutProvider>
         </div>
     )
-
 }
 
 export default App;

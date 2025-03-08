@@ -5,7 +5,7 @@ import Article from "./Article"
 function Blog() {
     return (
         <div>
-            <h1 style={{textAlign: "center", marginTop:"30px"}}>Health Blog</h1>
+            <h1 style={{ textAlign: "center", marginTop: "30px" }}>Health Blog</h1>
             <div className="blogContainer">
                 {
                     Object.entries(data).map(([key, value], index) => (
