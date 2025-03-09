@@ -6,6 +6,7 @@ function UserAuth() {
     const [alternate, setAlternate] = useState("Sign up")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("")
 
     const handleStatus = (event) => {
         event.preventDefault()
@@ -21,12 +22,17 @@ function UserAuth() {
     }
 
 
-    
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:5000/login', {username, password})
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+        if (status == "Sign in"){
+            axios.post('http://localhost:5000/login', {username, password})
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+        }
+        else{
+          
+            axios.post('http://localhost:5000/register', {username, password, email}).then(res => console.log(res)).catch(err => console.log(err))
+        }
 
     }
     
@@ -53,7 +59,7 @@ function UserAuth() {
                             </div>
 
                             <div className="input">
-                                <input type="email" placeholder="Email" />
+                                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
                             </div>
                         </>
                     }

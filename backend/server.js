@@ -90,7 +90,12 @@ app.post('/login', async (req, res) => {
 
 app.post('/register', async (req, res) => {
     const {username, email, password} = req.body;
-    
+    accountsDb.query(`
+        INSERT INTO users(username, email, hashed_pw) 
+        VALUES (?, ?, ?);`, [username, email, password], async (error, result) => {
+            console.log(`User: ${username} created`)
+        })
+    res.status(201).json({message: "User created"})
 
 })
 
