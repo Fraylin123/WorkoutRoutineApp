@@ -7,14 +7,15 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const mysql = require('mysql2')
 const bcrypt = require('bcryptjs')
-const jws = require('jsonwebtoken')
+const jws = require('jsonwebtoken');
 
 
 const app = express();
-const port = 5000;
+const port = process.env.Port;
 
 app.use(cors());
 app.use(express.json());
+
 //SQL Connection
 const accountsDb = mysql.createConnection({
     host: process.env.cHost,
@@ -28,7 +29,7 @@ accountsDb.connect((error) => {
         console.error("Connection error:", error)
     }
     else{
-        console.log("Succesful connection")
+        console.log("Succesful SQL connection")
     }
 })
 
@@ -74,6 +75,18 @@ app.get('/exercises/:name', async (req, res) => {
         res.status(500).json({ error: 'Error fetching exercise' });
     }
 });
+
+//CRUD routes
+app.post('/login', async (req, res) => {
+    const {username, password} = req.body;
+    accountsDb.query("SELECT * FROM users where username = ?", [username], async (error, result) => {
+        if (result.length == 0) return res.status(404).json({error: "User not found"});
+        const user = result[0]
+        console.log(user.username)
+    })
+    
+})
+
 
 app.post('/register', async (req, res) => {
     const {username, email, password} = req.body;
