@@ -30,8 +30,7 @@ function UserAuth() {
             .catch(err => console.log(err));
         }
         else{
-          
-            axios.post('http://localhost:5000/register', {username, password, email}).then(res => console.log(res)).catch(err => console.log(err))
+            axios.post('http://localhost:5000/register', {username, password, email}).then(res => console.log(res)).catch(err => console.log("The error is:", err))
         }
 
     }

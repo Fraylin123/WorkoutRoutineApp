@@ -9,10 +9,10 @@ const mysql = require('mysql2')
 const bcrypt = require('bcryptjs')
 const jws = require('jsonwebtoken');
 
-
 const app = express();
 const port = process.env.Port;
 
+//Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -28,7 +28,7 @@ accountsDb.connect((error) => {
     if (error) {
         console.error("Connection error:", error)
     }
-    else{
+    else {
         console.log("Succesful SQL connection")
     }
 })
@@ -77,26 +77,44 @@ app.get('/exercises/:name', async (req, res) => {
 });
 
 //CRUD routes
+
+//Login route
 app.post('/login', async (req, res) => {
-    const {username, password} = req.body;
+    const { username, password } = req.body;
     accountsDb.query("SELECT * FROM users where username = ?", [username], async (error, result) => {
-        if (result.length == 0) return res.status(404).json({error: "User not found"});
+        if (error) return res.status(500).json({ error: "Database server error" })
+
+        if (result.length == 0) return res.status(404).json({ error: "User not found" });
         const user = result[0]
         console.log(user.username)
     })
-    
+
 })
 
-
+//Registration route
 app.post('/register', async (req, res) => {
-    const {username, email, password} = req.body;
-    accountsDb.query(`
-        INSERT INTO users(username, email, hashed_pw) 
-        VALUES (?, ?, ?);`, [username, email, password], async (error, result) => {
-            console.log(`User: ${username} created`)
-        })
-    res.status(201).json({message: "User created"})
+    const { username, password, email } = req.body;
 
-})
+    //Query to handle cases where there is already an account with the same email
+    accountsDb.query("SELECT * FROM users WHERE email = ?", [email], async (error, result) => {
+        if (error) return res.status(500).json({ error: "Database server error" })
+
+        if (result.length > 0) {
+            return res.status(400).json({ message: "Account already exists with that email" })
+        }
+
+        const hashedPw = await bcrypt.hash(password, 10) //Hash plaintext password with a cost factor of 10, 2^10 = 1024 iterations
+
+        accountsDb.query(`
+        INSERT INTO users (username, email, hashed_pw) 
+        VALUES (?, ?, ?);`, [username, email, hashedPw], (error, result) => {
+            if (error) return res.status(500).json({ error: "Registration error" })
+            res.status(201).json({ message: "User created" })
+        });
+    });
+});
+
+
+
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
