@@ -26,7 +26,9 @@ function UserAuth() {
         e.preventDefault()
         if (status == "Sign in"){
             axios.post('http://localhost:5000/login', {username, password})
-            .then(res => console.log(res))
+            .then(res => {
+                alert("User authenticated");
+            })
             .catch(err => console.log(err));
         }
         else{
@@ -35,7 +37,6 @@ function UserAuth() {
 
     }
     
-
     return (
         <div className="authMain">
             <form className="user-authentication-container" onSubmit={handleSubmit}>
