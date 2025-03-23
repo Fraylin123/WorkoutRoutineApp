@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const mysql = require('mysql2')
 const bcrypt = require('bcryptjs')
-const jws = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 const port = process.env.Port;
@@ -94,6 +94,8 @@ app.post('/login', async (req, res) => {
             return res.status(401).json({message: "Invalid credentials"})
         }
 
+
+        const token = jwt.sign({userId: user.id, username: user.username}, process.env.JWT_SECRET_KEY, {expiresIn: "5h"})
         res.json({message: "User authenticated"})
     })
 
