@@ -29,45 +29,29 @@ function UserAuth() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        if (status == "Sign in") {
-            try {
-                const res = await axios.post('http://localhost:5000/login', { username, password })
-                navigate("/WorkoutRoutineApp/Home")
-            } catch (error) {
-                alert("Wrong credentials")
-            }
-
+        if (status == "Sign in"){
+            axios.post('http://localhost:5000/login', {username, password})
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
         }
-        else {
-            try {
-                const res = await axios.post('http://localhost:5000/register', { username, password, email });
-                navigate("/WorkoutRoutineApp")
-            } catch (error) {
-                console.log("The error is", error);
-            }
+        else{
+            axios.post('http://localhost:5000/register', {username, password, email}).then(res => console.log(res)).catch(err => console.log("The error is:", err))
         }
+
     }
+    
 
-
-
-return (
-    <div className="authMain">
-        <form className="user-authentication-container" onSubmit={handleSubmit}>
-            <div className="user-heading">
-                <span>{status == "Sign in" ? "Sign in" : "Sign up"}</span>
-                <div className="underline"></div>
-            </div>
-            <div className="inputs">
-                <div className="input">
-                    <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} />
+    return (
+        <div className="authMain">
+            <form className="user-authentication-container" onSubmit={handleSubmit}>
+                <div className="user-heading">
+                    <span>{status == "Sign in" ? "Sign in" : "Sign up"}</span>
+                    <div className="underline"></div>
                 </div>
-
-                {status === "Sign up" &&
-                 <div className="input">
-                 <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
-             </div>
-             }
+                <div className="inputs">
+                    <div className="input">
+                        <input type="text" placeholder="Username" onChange = {(e) => setUsername(e.target.value)}/>
+                    </div>
 
                 <div className="input">
                     <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />

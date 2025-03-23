@@ -85,16 +85,8 @@ app.post('/login', async (req, res) => {
         if (error) return res.status(500).json({ error: "Database server error" })
 
         if (result.length == 0) return res.status(404).json({ error: "User not found" });
-
         const user = result[0]
-        
-        const match = await bcrypt.compare(password, user.hashed_pw);
-
-        if (!match){
-            return res.status(401).json({message: "Invalid credentials"})
-        }
-
-        res.json({message: "User authenticated"})
+        console.log(user.username)
     })
 
 })
