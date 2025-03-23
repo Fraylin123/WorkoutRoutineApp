@@ -1,5 +1,5 @@
 import './Home.css';
-
+import Navigation from './Navigation.js'
 import RightSection from './RightSection.js'
 import LeftSection from './LeftSection.js'
 import Result from "./Result.js"
@@ -136,6 +136,7 @@ function Home() {
 
     return (
         <div className="main">
+            <Navigation />
             <h1 style={{ textAlign: 'center' }}>Workout Routine App</h1>
             <div className='routineType'>
                 <button onClick={() => handleRoutineClick(0)} style={{ backgroundColor: routineValues[0] ? 'gray' : 'black' }}>PPL</button>

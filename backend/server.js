@@ -93,6 +93,7 @@ app.post('/login', async (req, res) => {
         if (!match){
             return res.status(401).json({message: "Invalid credentials"})
         }
+
         res.json({message: "User authenticated"})
     })
 
@@ -101,7 +102,6 @@ app.post('/login', async (req, res) => {
 //Registration route
 app.post('/register', async (req, res) => {
     const { username, password, email } = req.body;
-
     //Query to handle cases where there is already an account with the same email
     accountsDb.query("SELECT * FROM users WHERE email = ?", [email], async (error, result) => {
         if (error) return res.status(500).json({ error: "Database server error" })

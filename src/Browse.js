@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import Video from './Video'
 import { useContext } from 'react';
 import { WorkoutContext } from './WorkoutContext.js'
+import Navigation from './Navigation.js'
 
 //Component for the Browse section
 function Browse() {
@@ -28,6 +29,7 @@ function Browse() {
 
     return (
         <div className="browse-main">
+            <Navigation />
             <h1>Exercise Browser</h1>
             <div className="searchBar">
                 <input type="text" placeholder="Search" onChange={(e) => handleSearch(e.target.value)} value={exerciseSearch}></input>

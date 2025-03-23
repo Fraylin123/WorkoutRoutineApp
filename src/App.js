@@ -13,7 +13,7 @@ function App() {
         <div className="root">
             <WorkoutProvider>
                 <Router>
-                    <Navigation />
+                    
                     <Routes>
                         <Route path="/WorkoutRoutineApp" element={<UserAuth />} />
                         <Route path="/WorkoutRoutineApp/Home" element={<Home />} />

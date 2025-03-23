@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./UserAuth.css"
 import axios from 'axios'
 function UserAuth() {
@@ -7,6 +8,7 @@ function UserAuth() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
+    const navigate = useNavigate();
 
     const handleStatus = (event) => {
         event.preventDefault()
@@ -19,65 +21,80 @@ function UserAuth() {
             setAlternate("Sign up")
         }
         setStatus(event.target.textContent)
+        setUsername("")
+        setEmail("")
+        setPassword("")
     }
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        if (status == "Sign in"){
-            axios.post('http://localhost:5000/login', {username, password})
-            .then(res => {
-                alert("User authenticated");
-            })
-            .catch(err => console.log(err));
-        }
-        else{
-            axios.post('http://localhost:5000/register', {username, password, email}).then(res => console.log(res)).catch(err => console.log("The error is:", err))
-        }
 
+        if (status == "Sign in") {
+            try {
+                const res = await axios.post('http://localhost:5000/login', { username, password })
+                navigate("/WorkoutRoutineApp/Home")
+            } catch (error) {
+                alert("Wrong credentials")
+            }
+
+        }
+        else {
+            try {
+                const res = await axios.post('http://localhost:5000/register', { username, password, email });
+                navigate("/WorkoutRoutineApp")
+            } catch (error) {
+                console.log("The error is", error);
+            }
+        }
     }
-    
-    return (
-        <div className="authMain">
-            <form className="user-authentication-container" onSubmit={handleSubmit}>
-                <div className="user-heading">
-                    <span>{status == "Sign in" ? "Sign in" : "Sign up"}</span>
-                    <div className="underline"></div>
-                </div>
-                <div className="inputs">
-                    <div className="input">
-                        <input type="text" placeholder="Username" onChange = {(e) => setUsername(e.target.value)}/>
-                    </div>
 
-                    <div className="input">
-                        <input type="password" placeholder="Password" onChange = {(e) => setPassword(e.target.value)}/>
-                    </div>
-                    {status === "Sign up" &&
-                        <>
-                            <div className="input">
-                                <input type="password" placeholder="Confirm password" />
-                            </div>
 
-                            <div className="input">
-                                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
-                            </div>
-                        </>
-                    }
 
-                </div>
-                <div className="submit-container">
-                    <button>{status}</button>
-
-                </div>
-                
-                <div className="sign-up">
-                    <button onClick={(event) => handleStatus(event)}>{alternate}</button>
+return (
+    <div className="authMain">
+        <form className="user-authentication-container" onSubmit={handleSubmit}>
+            <div className="user-heading">
+                <span>{status == "Sign in" ? "Sign in" : "Sign up"}</span>
+                <div className="underline"></div>
+            </div>
+            <div className="inputs">
+                <div className="input">
+                    <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} />
                 </div>
 
-            </form>
-        </div>
+                {status === "Sign up" &&
+                 <div className="input">
+                 <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
+             </div>
+             }
 
-    )
+                <div className="input">
+                    <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                </div>
+                {status === "Sign up" &&
+                    <>
+                        <div className="input">
+                            <input type="password" placeholder="Confirm password" />
+                        </div>
+
+                    </>
+                }
+
+            </div>
+            <div className="submit-container">
+                <button>{status}</button>
+
+            </div>
+
+            <div className="sign-up">
+                <button onClick={(event) => handleStatus(event)}>{alternate}</button>
+            </div>
+
+        </form>
+    </div>
+
+)
 }
 
 export default UserAuth;
