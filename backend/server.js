@@ -8,13 +8,19 @@ const cors = require('cors');
 const mysql = require('mysql2')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const port = process.env.Port;
 
 //Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
+
 app.use(express.json());
+app.use(cookieParser());
 
 //SQL Connection
 const accountsDb = mysql.createConnection({
@@ -96,7 +102,14 @@ app.post('/login', async (req, res) => {
 
 
         const token = jwt.sign({userId: user.id, username: user.username}, process.env.JWT_SECRET_KEY, {expiresIn: "5h"})
-        res.json({message: "User authenticated"})
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: "none"
+        })
+
+        res.json({message: "User authenticated", user: {id: user.id, username: user.username}});
     })
 
 })
