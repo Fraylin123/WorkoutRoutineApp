@@ -14,6 +14,8 @@ const app = express();
 const port = process.env.Port;
 
 //Middleware
+const verifyToken = require('../backend/middleware/middleware')
+
 app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true
@@ -59,8 +61,8 @@ const exerciseSchema = new mongoose.Schema({
 
 const Exercise = mongoose.model('Exercise', exerciseSchema);
 
-//APIs Routes
-app.get('/exercises', async (req, res) => {
+//APIs Routes and protected routes
+app.get('/exercises', verifyToken, async (req, res) => {
     try {
         const exercises = await Exercise.find({});
         res.json(exercises);
@@ -104,8 +106,8 @@ app.post('/login', async (req, res) => {
 
         res.cookie('token', token, {
             httpOnly: true,
-            secure: false,
-            sameSite: "none"
+            secure: true,
+            sameSite: "None"
         })
 
         res.json({message: "User authenticated", user: {id: user.id, username: user.username}});

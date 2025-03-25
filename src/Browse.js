@@ -13,7 +13,7 @@ function Browse() {
 
     useEffect(() => {
         if (exerciseContainers.length == 0) {
-            axios.get("http://localhost:5000/exercises")
+            axios.get("http://localhost:5000/exercises", {withCredentials:true})
                 .then((response) => {
                     setExerciseContainers(response.data);
                 })

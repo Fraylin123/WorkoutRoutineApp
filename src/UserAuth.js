@@ -32,9 +32,9 @@ function UserAuth() {
 
         if (status == "Sign in") {
             try {
-                const res = await axios.post('http://localhost:5000/login', { username, password })
-                console.log(res.data.message)
-                //navigate("/WorkoutRoutineApp/Home")
+                const res = await axios.post('http://localhost:5000/login', { username, password }, {withCredentials: true})
+                console.log(res.data)
+                navigate("/WorkoutRoutineApp/Home")
             } catch (error) {
                 alert("Wrong credentials")
             }
