@@ -19,7 +19,7 @@ function LeftSection({ setExerciseData, setJSON, day, errors, setErrors, setButt
     const [exercises, setExercise] = useState(exerciseJSON.find(item => item.day === day.name)?.exercises || [{ id: 1, name: "", sets: "", reps: "" }, { id: 2, name: "", sets: "", reps: "" }, { id: 3, name: "", sets: "", reps: "" }, { id: 4, name: "", sets: "", reps: "" }, { id: 5, name: "", sets: "", reps: "" }]);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/exercises")
+        axios.get("http://localhost:5000/exercises", {withCredentials:true})
             .then((response) => {
                 const exerciseNames = response.data.map(exercise => exercise._id)
                 setExercisesList(exerciseNames)
