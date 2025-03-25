@@ -5,6 +5,7 @@ import Browse from "./Browse.js"
 import Blog from "./Blog.js"
 import Footer from "./Footer.js"
 import UserAuth from './UserAuth.js';
+import ProtectedRoute from './ProtectedRoute.js';
 
 import { WorkoutProvider } from './WorkoutContext.js';
 
@@ -16,9 +17,9 @@ function App() {
                     
                     <Routes>
                         <Route path="/WorkoutRoutineApp" element={<UserAuth />} />
-                        <Route path="/WorkoutRoutineApp/Home" element={<Home />} />
-                        <Route path="/WorkoutRoutineApp/browse" element={<Browse />} />
-                        <Route path="/WorkoutRoutineApp/blog" element={<Blog />} />
+                        <Route path="/WorkoutRoutineApp/Home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                        <Route path="/WorkoutRoutineApp/browse" element={<ProtectedRoute><Browse /></ProtectedRoute>} />
+                        <Route path="/WorkoutRoutineApp/blog" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
                     </Routes>
                     <Footer />
 

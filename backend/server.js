@@ -71,7 +71,7 @@ app.get('/exercises', verifyToken, async (req, res) => {
     }
 });
 
-app.get('/exercises/:name', async (req, res) => {
+app.get('/exercises/:name', verifyToken, async (req, res) => {
     try {
         const exercise = await Exercise.findOne({ _id: req.params.name });
         if (exercise) {
@@ -103,7 +103,8 @@ app.post('/login', async (req, res) => {
 
 
         const token = jwt.sign({userId: user.id, username: user.username}, process.env.JWT_SECRET_KEY, {expiresIn: "5h"})
-
+        
+        //Assigning cookie to authenticated user
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
