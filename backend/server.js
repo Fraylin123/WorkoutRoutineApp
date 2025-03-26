@@ -89,7 +89,7 @@ app.get('/exercises/:name', verifyToken, async (req, res) => {
 //Login route
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    accountsDb.query("SELECT * FROM users where username = ?", [username], async (error, result) => {
+    accountsDb.query("SELECT * FROM users where username = ? OR email = ?", [username, username], async (error, result) => {
         if (error) return res.status(500).json({ error: "Database server error" })
 
         if (result.length == 0) return res.status(404).json({ error: "User not found" });
