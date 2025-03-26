@@ -67,7 +67,7 @@ app.get('/exercises', verifyToken, async (req, res) => {
         const exercises = await Exercise.find({});
         res.json(exercises);
     } catch (err) {
-        res.status(500).json({ err: 'Error fetching exercises' });
+        res.status(500).json({ error: 'Error fetching exercises' });
     }
 });
 

@@ -1,21 +1,16 @@
 import { Navigate } from "react-router-dom"
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "./AuthContext";
 
 
 function ProtectedRoute({children}) {
-    const [authenticated, setAuthenticated] = useState(null)
-
-
-    useEffect(()=> {
-        axios.get("localhost:5000/exercises", {withCredentials:true}).then(()=> setAuthenticated(true)).catch(()=> setAuthenticated(false))
-
-    }, [])
-    
+    const {authenticated} = useContext(AuthContext);
 
     if (authenticated == null){
         return (<p>Loading...</p>)
     }
+    console.log("Authentication is", authenticated)
 
     return authenticated ? children : <Navigate to="/WorkoutRoutineApp/"/>
 

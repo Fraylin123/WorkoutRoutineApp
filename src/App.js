@@ -8,23 +8,25 @@ import UserAuth from './UserAuth.js';
 import ProtectedRoute from './ProtectedRoute.js';
 
 import { WorkoutProvider } from './WorkoutContext.js';
+import { AuthProvider } from "./AuthContext.js"
 
 function App() {
     return (
         <div className="root">
-            <WorkoutProvider>
-                <Router>
-                    
-                    <Routes>
-                        <Route path="/WorkoutRoutineApp" element={<UserAuth />} />
-                        <Route path="/WorkoutRoutineApp/Home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-                        <Route path="/WorkoutRoutineApp/browse" element={<ProtectedRoute><Browse /></ProtectedRoute>} />
-                        <Route path="/WorkoutRoutineApp/blog" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
-                    </Routes>
-                    <Footer />
+            <AuthProvider>
+                <WorkoutProvider>
+                    <Router>
+                        <Routes>
+                            <Route path="/WorkoutRoutineApp" element={<UserAuth />} />
+                            <Route path="/WorkoutRoutineApp/Home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                            <Route path="/WorkoutRoutineApp/browse" element={<ProtectedRoute><Browse /></ProtectedRoute>} />
+                            <Route path="/WorkoutRoutineApp/blog" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
+                        </Routes>
+                        <Footer />
 
-                </Router>
-            </WorkoutProvider>
+                    </Router>
+                </WorkoutProvider>
+            </AuthProvider>
         </div>
     )
 }

@@ -8,7 +8,7 @@ function RightSection({ data }) {
     const [exerciseVid, setExerciseVid] = useState('')
     useEffect(() => {
         if (data.length > 0) {
-            axios.get(`http://localhost:5000/exercises/${data}`).then(
+            axios.get(`http://localhost:5000/exercises/${data}`,{withCredentials:true}).then(
                 (response) => {
                     console.log("Succesful request!")
                     const vidID = response.data['video']
