@@ -63,45 +63,47 @@ function UserAuth() {
 
     return (
         <div className="authMain">
-            <form className="user-authentication-container" onSubmit={handleSubmit}>
-                <div className="user-heading">
-                    <span>{status == "Sign in" ? "Sign in" : "Sign up"}</span>
-                    <div className="underline"></div>
-                </div>
-                <div className="inputs">
-                    <div className="input">
-                        <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} />
+            <div className="user-authentication-container">
+                <form className="form-container" onSubmit={handleSubmit}>
+                    <div className="user-heading">
+                        <span>{status == "Sign in" ? "Sign in" : "Sign up"}</span>
+                        <div className="underline"></div>
                     </div>
-
-                    {status === "Sign up" &&
+                    <div className="inputs">
                         <div className="input">
-                            <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
+                            <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} />
                         </div>
-                    }
 
-                    <div className="input">
-                        <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
-                    </div>
-                    {status === "Sign up" &&
-                        <>
+                        {status === "Sign up" &&
                             <div className="input">
-                                <input type="password" placeholder="Confirm password" />
+                                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
                             </div>
+                        }
 
-                        </>
-                    }
+                        <div className="input">
+                            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                        </div>
+                        {status === "Sign up" &&
+                            <>
+                                <div className="input">
+                                    <input type="password" placeholder="Confirm password" />
+                                </div>
+                            </>
+                        }
 
-                </div>
-                <div className="submit-container">
-                    <button>{status}</button>
+                    </div>
+                    
+                    <div className="submit-container">
+                        <button>{status}</button>
 
-                </div>
+                    </div>
 
-                <div className="sign-up">
-                    <button onClick={(event) => handleStatus(event)}>{alternate}</button>
-                </div>
+                    <div className="sign-up">
+                        <button onClick={(event) => handleStatus(event)}>{alternate}</button>
+                    </div>
 
-            </form>
+                </form>
+            </div>
         </div>
 
     )

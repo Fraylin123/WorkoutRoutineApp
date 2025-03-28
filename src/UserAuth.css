@@ -1,19 +1,23 @@
 .authMain {
-    background-color: white;
-    min-height: 93vh;
+    min-height: 100vh;
+}
+
+.user-authentication-container{
+    min-height:100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+   
+
 }
 
-.user-authentication-container {
+.form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 35%;
     padding: 50px;
-    max-width: 500px;
-    min-height: 100px;
     background-color: #ECEFF1;
 }
 
@@ -26,44 +30,48 @@
 
 .user-heading span {
     color: black;
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 2em;
+    font-weight: 700px;
 }
 
 .underline {
-    width: 100px;
+    width: 80%;
     height: 5px;
     border-radius: 20px;
     background: black;
 }
 
 .inputs {
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 90%;
+    font-size: 90%;
 }
 
 .input input {
-    height: 50px;
-    width: 400px;
+    height: 2.4em;
+    width: 100%;
     background-color: white;
     border: none;
     outline: none;
-    font-size: 19px;
+    font-size: 1.1em;
     padding-left: 5px;
 }
 
 .submit-container {
     display: flex;
-    width: 400px;
     justify-content: center;
     flex-direction: column;
+    width: 90%;
+    
 }
 
 .submit-container button {
     margin-top: 30px;
     font-size: 20px;
+    border-radius: 15px;
     background-color: black;
     color: white;
     padding: 10px;
@@ -76,7 +84,7 @@
     display: flex;
     justify-content: start;
     flex-direction: row;
-    width: 400px;
+    width: 90%;
 }
 
 .sign-up button {
