@@ -108,7 +108,7 @@ app.post('/login', async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
-            sameSite: "None"
+            sameSite: "none"
         })
 
         res.json({message: "User authenticated", user: {id: user.id, username: user.username}});
@@ -138,6 +138,17 @@ app.post('/register', async (req, res) => {
     });
 });
 
+
+//Logout Route
+
+app.post('/logout', verifyToken, async (req,res) =>{
+    res.clearCookie("token", {
+        httpOnly: true,
+        secure:true,
+        sameSite: "none"
+    })
+    res.json({message: "Logged out successfully" });
+} )
 
 
 

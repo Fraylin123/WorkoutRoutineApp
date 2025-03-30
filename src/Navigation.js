@@ -12,7 +12,7 @@ function Navigation() {
                 <li><Link to="/WorkoutRoutineApp/home">Home</Link></li>
                 <li><Link to="/WorkoutRoutineApp/browse">Browse</Link></li>
                 <li><Link to="/WorkoutRoutineApp/blog">Blog</Link></li>
-                <li><button onClick={logout}>Logout</button></li>
+                <li><span onClick={logout}>Logout</span></li>
             </ul>
         </div>
     )

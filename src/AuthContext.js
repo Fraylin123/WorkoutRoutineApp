@@ -5,6 +5,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
     const [authenticated, setAuthenticated] = useState(null)
+  
 
     const checkAuth = async () => {
         try {
@@ -18,13 +19,27 @@ export const AuthProvider = ({children}) => {
 
     }
 
+    const logout = async () => {
+        try{
+            const response = await axios.post("http://localhost:5000/logout", {withCredentials: true});
+            setAuthenticated(false);
+            window.location.href = "/WorkoutRoutineApp";
+
+
+        }
+        catch (error){
+            console.log("Error", error)
+
+        }
+    }
+
     useEffect(() => {
         checkAuth()
     }, [])
 
     return (
         <AuthContext.Provider value={{
-            authenticated, checkAuth}}>
+            authenticated, checkAuth, logout}}>
             {children}
         </AuthContext.Provider>
         

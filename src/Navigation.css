@@ -12,7 +12,7 @@
 }
 
 
-.nav ul li a {
+.nav ul li a,.nav ul li span  {
     text-align: center;
     padding: 30px 20px 30px 10px;
     font-size: 22px;
@@ -22,27 +22,15 @@
     transition: 0.3s;
    
 }
-.nav ul li button{
-    border:none;
-    background-color:black;
-    color: white;
-    font-size: 22px;
-    cursor:pointer;
-    transition: 0.3s;
-    text-decoration: none;
-    text-align:center;
-    padding-top: 4px;
-    padding-right: 10px;
-}
+
 
   
-
 
 .nav a:hover{
     background-color: gray;
     
 }
 
-.nav button:hover {
+.nav span:hover {
     color: red;
 }
