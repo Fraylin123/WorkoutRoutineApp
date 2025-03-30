@@ -140,7 +140,6 @@ app.post('/register', async (req, res) => {
 
 
 //Logout Route
-
 app.post('/logout', verifyToken, async (req,res) =>{
     res.clearCookie("token", {
         httpOnly: true,

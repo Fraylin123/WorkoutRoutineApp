@@ -21,7 +21,7 @@ export const AuthProvider = ({children}) => {
 
     const logout = async () => {
         try{
-            const response = await axios.post("http://localhost:5000/logout", {withCredentials: true});
+            const response = await axios.post("http://localhost:5000/logout", {}, {withCredentials: true});
             setAuthenticated(false);
             window.location.href = "/WorkoutRoutineApp";
 

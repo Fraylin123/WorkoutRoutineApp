@@ -11,6 +11,7 @@ function UserAuth() {
     const [alternate, setAlternate] = useState("Sign up")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [confirmationPassword, setConfirmationPassword] = useState("")
     const [email, setEmail] = useState("")
     const navigate = useNavigate();
     const { checkAuth, authenticated } = useContext(AuthContext);
@@ -53,11 +54,16 @@ function UserAuth() {
 
         }
         else {
-            try {
-                const res = await axios.post('http://localhost:5000/register', { username, password, email });
-                window.location.reload();
-            } catch (error) {
-                console.log("The error is", error);
+            if (password == confirmationPassword) {
+                try {
+                    const res = await axios.post('http://localhost:5000/register', { username, password, email });
+                    window.location.reload();
+                } catch (error) {
+                    console.log("The error is", error);
+                }
+            }
+            else{
+                alert("Passwords dont match")
             }
         }
     }
@@ -96,7 +102,7 @@ function UserAuth() {
                         {status === "Sign up" &&
                             <>
                                 <div className="input">
-                                    <input type="password" placeholder="Confirm password" required />
+                                    <input type="password" placeholder="Confirm password" onChange={(e) => { setConfirmationPassword(e.target.value) }} value={confirmationPassword} required />
                                 </div>
                             </>
                         }
