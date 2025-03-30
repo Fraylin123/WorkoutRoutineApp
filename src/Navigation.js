@@ -1,13 +1,19 @@
 import './Navigation.css';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './AuthContext';
 
 //Component for the navigation bar
 function Navigation() {
+    const {logout} = useContext(AuthContext)
     return (
         <div className='nav'>
-            <Link to="/WorkoutRoutineApp/home">Home</Link>
-            <Link to="/WorkoutRoutineApp/browse">Browse</Link>
-            <Link to="/WorkoutRoutineApp/blog">Blog</Link>
+            <ul>
+                <li><Link to="/WorkoutRoutineApp/home">Home</Link></li>
+                <li><Link to="/WorkoutRoutineApp/browse">Browse</Link></li>
+                <li><Link to="/WorkoutRoutineApp/blog">Blog</Link></li>
+                <li><button onClick={logout}>Logout</button></li>
+            </ul>
         </div>
     )
 }
