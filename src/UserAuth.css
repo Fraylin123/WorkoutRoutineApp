@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 35%;
+    width: 30%;
     padding: 50px;
     background-color: #ECEFF1;
 }
@@ -30,8 +30,8 @@
 
 .user-heading span {
     color: black;
-    font-size: 2em;
-    font-weight: 700px;
+    font-size: 2.5em;
+    font-weight: 500;
 }
 
 .underline {
@@ -51,7 +51,7 @@
 }
 
 .input input {
-    height: 2.4em;
+    height: 3em;
     width: 100%;
     background-color: white;
     border: none;

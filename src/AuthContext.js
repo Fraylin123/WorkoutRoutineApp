@@ -10,10 +10,9 @@ export const AuthProvider = ({children}) => {
         try {
             const response = await axios.get("http://localhost:5000/exercises", { withCredentials: true })
             setAuthenticated(true)
-            
 
         } catch (error){
-            console.log("Erorr found", error)
+            console.log("erorr found", error)
             setAuthenticated(false)
         }
 

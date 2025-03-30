@@ -35,9 +35,15 @@ h1 {
     width: 30%;
     margin: 5px;
     padding: 5px;
-    font-family: 'Helvetica', 'Arial', 'Sans-serif'
+    font-family: 'Helvetica', 'Arial', 'Sans-serif';
+   
+    
 }
 
 .childContainer span {
     padding: 5px 2px;
+}
+
+.videoComponent{
+    width:200px;
 }

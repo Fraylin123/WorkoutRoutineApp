@@ -13,7 +13,8 @@ function UserAuth() {
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
     const navigate = useNavigate();
-    const { checkAuth } = useContext(AuthContext);
+    const { checkAuth, authenticated } = useContext(AuthContext);
+
 
     const handleStatus = (event) => {
         event.preventDefault()
@@ -30,6 +31,8 @@ function UserAuth() {
         setEmail("")
         setPassword("")
     }
+
+
 
 
     const handleSubmit = async (e) => {
@@ -59,6 +62,13 @@ function UserAuth() {
         }
     }
 
+    useEffect(() => {
+        if (authenticated) {
+            navigate("/WorkoutRoutineApp/Home")
+        }
+
+    }, [authenticated])
+
 
 
     return (
@@ -71,28 +81,28 @@ function UserAuth() {
                     </div>
                     <div className="inputs">
                         <div className="input">
-                            <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} value={username} />
+                            <input type="text" placeholder="Username" required onChange={(e) => setUsername(e.target.value)} value={username} />
                         </div>
 
                         {status === "Sign up" &&
                             <div className="input">
-                                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
+                                <input type="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} value={email} />
                             </div>
                         }
 
                         <div className="input">
-                            <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                            <input type="password" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} value={password} />
                         </div>
                         {status === "Sign up" &&
                             <>
                                 <div className="input">
-                                    <input type="password" placeholder="Confirm password" />
+                                    <input type="password" placeholder="Confirm password" required />
                                 </div>
                             </>
                         }
 
                     </div>
-                    
+
                     <div className="submit-container">
                         <button>{status}</button>
 
