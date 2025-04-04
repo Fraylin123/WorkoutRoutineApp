@@ -7,12 +7,9 @@ Backend:<br>
 Node.js - Web server<br>
 Express.js - To establish routes<br>
 MongoDB - For static scraped exercise data<br>
-MySQL - For storing user information and handle user authentication
+MySQL - For storing user information and handling user authentication<br>
 
 Instructions to run:
 
 1. Download the zip file and extract it
-2. Open the folder in the zip file and run "npm start" on the terminal (Frontend)
-3. Open another terminal and cd to "backend"
-4. Run "node server.js" (Backend)
-   
+2. Open the folder in the zip file and run "npm start" in the terminal.
