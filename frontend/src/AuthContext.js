@@ -23,8 +23,7 @@ export const AuthProvider = ({children}) => {
         try{
             const response = await axios.post("http://localhost:5000/api/auth/logout", {}, {withCredentials: true});
             setAuthenticated(false);
-            window.location.href = "/WorkoutRoutineApp";
-
+            window.location.href = "/";
 
         }
         catch (error){
