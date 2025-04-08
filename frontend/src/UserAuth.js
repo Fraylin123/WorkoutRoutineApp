@@ -40,7 +40,7 @@ function UserAuth() {
 
                 console.log(res.data)
                 await checkAuth()
-                navigate("/WorkoutRoutineApp/Home")
+                navigate("/home")
 
             } catch (error) {
                 alert("Wrong credentials")
@@ -64,7 +64,7 @@ function UserAuth() {
 
     useEffect(() => {
         if (authenticated) {
-            navigate("/WorkoutRoutineApp/Home")
+            navigate("/home")
         }
 
     }, [authenticated])

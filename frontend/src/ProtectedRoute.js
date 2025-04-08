@@ -12,7 +12,7 @@ function ProtectedRoute({children}) {
     }
     console.log("Authentication is", authenticated)
 
-    return authenticated ? children : <Navigate to="/WorkoutRoutineApp/"/>
+    return authenticated ? children : <Navigate to="/"/>
 
 }
 

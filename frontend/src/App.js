@@ -16,10 +16,10 @@ function App() {
                 <WorkoutProvider>
                     <Router>
                         <Routes>
-                            <Route path="/WorkoutRoutineApp" element={<UserAuth />} />
-                            <Route path="/WorkoutRoutineApp/Home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-                            <Route path="/WorkoutRoutineApp/browse" element={<ProtectedRoute><Browse /></ProtectedRoute>} />
-                            <Route path="/WorkoutRoutineApp/blog" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
+                            <Route path="/" element={<UserAuth />} />
+                            <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                            <Route path="/browse" element={<ProtectedRoute><Browse /></ProtectedRoute>} />
+                            <Route path="/blog" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
                         </Routes>
                         <Footer />
                     </Router>
