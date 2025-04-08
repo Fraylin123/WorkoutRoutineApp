@@ -9,9 +9,9 @@ function Navigation() {
     return (
         <div className='nav'>
             <ul>
-                <li><Link to="/WorkoutRoutineApp/home">Home</Link></li>
-                <li><Link to="/WorkoutRoutineApp/browse">Browse</Link></li>
-                <li><Link to="/WorkoutRoutineApp/blog">Blog</Link></li>
+                <li><Link to="/home">Home</Link></li>
+                <li><Link to="/browse">Browse</Link></li>
+                <li><Link to="/blog">Blog</Link></li>
                 <li><span onClick={logout}>Logout</span></li>
             </ul>
         </div>

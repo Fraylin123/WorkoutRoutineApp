@@ -8,6 +8,7 @@ import UserAuth from './UserAuth.js';
 import ProtectedRoute from './ProtectedRoute.js';
 import { WorkoutProvider } from './WorkoutContext.js';
 import { AuthProvider } from "./AuthContext.js"
+import Error404 from './Error404.js';
 
 function App() {
     return (
@@ -20,8 +21,9 @@ function App() {
                             <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                             <Route path="/browse" element={<ProtectedRoute><Browse /></ProtectedRoute>} />
                             <Route path="/blog" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
+                            <Route path="*" element={<Error404/>}/>
                         </Routes>
-                        <Footer />
+                       <Footer />
                     </Router>
                 </WorkoutProvider>
             </AuthProvider>

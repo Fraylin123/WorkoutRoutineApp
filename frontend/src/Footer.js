@@ -1,4 +1,3 @@
-
 import "./Footer.css"
 import linkedIn from "./icons/linkedin.png"
 import gitHub from "./icons/github.png"
