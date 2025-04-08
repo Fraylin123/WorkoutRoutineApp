@@ -5,6 +5,7 @@ import Video from './Video'
 import { useContext } from 'react';
 import { WorkoutContext } from './WorkoutContext.js'
 import Navigation from './Navigation.js'
+import Footer from "./Footer.js"
 
 //Component for the Browse section
 function Browse() {
@@ -53,6 +54,7 @@ function Browse() {
                     ))
                 }
             </div>
+            <Footer />
         </div>
     )
 }

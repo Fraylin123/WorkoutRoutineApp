@@ -6,6 +6,7 @@ import Result from "./Result.js"
 import { useEffect } from "react";
 import { useContext } from 'react';
 import { WorkoutContext } from './WorkoutContext.js'
+import Footer from "./Footer.js"
 
 //Component for the Home section
 function Home() {
@@ -135,47 +136,51 @@ function Home() {
     }, [days]);
 
     return (
-        <div className="main">
-            <Navigation />
-            <h1 style={{ textAlign: 'center' }}>Workout Routine App</h1>
-            <div className='routineType'>
-                <button onClick={() => handleRoutineClick(0)} style={{ backgroundColor: routineValues[0] ? 'gray' : 'black' }}>PPL</button>
-                <button onClick={() => handleRoutineClick(1)} style={{ backgroundColor: routineValues[1] ? 'gray' : 'black' }}>Upper Lower</button>
-                <button onClick={() => handleRoutineClick(2)} style={{ backgroundColor: routineValues[2] ? 'gray' : 'black' }}>Bro Split</button>
-            </div>
-
-            {routineValues.some(value => value === true) && (
-                <div className="fitnessLevel">
-                    <button onClick={() => handleFitnessClick(0)} style={{ backgroundColor: fitnessValues[0] ? 'gray' : 'black' }}>Beginner</button>
-                    <button onClick={() => handleFitnessClick(1)} style={{ backgroundColor: fitnessValues[1] ? 'gray' : 'black' }}>Intermediate</button>
-                    <button onClick={() => handleFitnessClick(2)} style={{ backgroundColor: fitnessValues[2] ? 'gray' : 'black' }}>Advanced</button>
+        <div className="homepage-container">
+            <div className="main">
+                <Navigation />
+                <h1 style={{ textAlign: 'center' }}>Workout Routine App</h1>
+                <div className='routineType'>
+                    <button onClick={() => handleRoutineClick(0)} style={{ backgroundColor: routineValues[0] ? 'gray' : 'black' }}>PPL</button>
+                    <button onClick={() => handleRoutineClick(1)} style={{ backgroundColor: routineValues[1] ? 'gray' : 'black' }}>Upper Lower</button>
+                    <button onClick={() => handleRoutineClick(2)} style={{ backgroundColor: routineValues[2] ? 'gray' : 'black' }}>Bro Split</button>
                 </div>
-            )
-            }
 
-            <div className='mainContainer'>
-                {days.map((currDay, index) => (
-                    <div key={index}>
-                        <h3>{currDay.name}</h3>
-                        <div className="pairedContainer">
-                            <LeftSection setExerciseData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)} day={currDay} errors={errors[index] || []} setErrors={(item) => sendArray(index, item)} setButtonClicked={setButtonClicked} />
-                            <RightSection data={exerciseData[index]} />
-                        </div>
+                {routineValues.some(value => value === true) && (
+                    <div className="fitnessLevel">
+                        <button onClick={() => handleFitnessClick(0)} style={{ backgroundColor: fitnessValues[0] ? 'gray' : 'black' }}>Beginner</button>
+                        <button onClick={() => handleFitnessClick(1)} style={{ backgroundColor: fitnessValues[1] ? 'gray' : 'black' }}>Intermediate</button>
+                        <button onClick={() => handleFitnessClick(2)} style={{ backgroundColor: fitnessValues[2] ? 'gray' : 'black' }}>Advanced</button>
                     </div>
-
-                ))
+                )
                 }
-            </div>
 
-            {fitnessValues.some(value => value === true) &&
-                <div className='submit'>
-                    <button onClick={() => handleSaveClick()}>Save</button>
+                <div className='mainContainer'>
+                    {days.map((currDay, index) => (
+                        <div key={index}>
+                            <h3>{currDay.name}</h3>
+                            <div className="pairedContainer">
+                                <LeftSection setExerciseData={(value) => updateData(index, value)} setJSON={(item) => updateExerciseJSON(index, item)} day={currDay} errors={errors[index] || []} setErrors={(item) => sendArray(index, item)} setButtonClicked={setButtonClicked} />
+                                <RightSection data={exerciseData[index]} />
+                            </div>
+                        </div>
+
+                    ))
+                    }
                 </div>
-            }
 
-            {buttonClicked &&
-                <Result exerciseData={exerciseJSON} />
-            }
+                {fitnessValues.some(value => value === true) &&
+                    <div className='submit'>
+                        <button onClick={() => handleSaveClick()}>Save</button>
+                    </div>
+                }
+
+                {buttonClicked &&
+                    <Result exerciseData={exerciseJSON} />
+                }
+                
+            </div>
+            <Footer />
         </div>
     )
 }

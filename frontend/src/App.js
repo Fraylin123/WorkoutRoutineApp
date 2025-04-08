@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./Home.js"
 import Browse from "./Browse.js"
 import Blog from "./Blog.js"
-import Footer from "./Footer.js"
 import UserAuth from './UserAuth.js';
 import ProtectedRoute from './ProtectedRoute.js';
 import { WorkoutProvider } from './WorkoutContext.js';
@@ -23,7 +22,6 @@ function App() {
                             <Route path="/blog" element={<ProtectedRoute><Blog /></ProtectedRoute>} />
                             <Route path="*" element={<Error404/>}/>
                         </Routes>
-                       <Footer />
                     </Router>
                 </WorkoutProvider>
             </AuthProvider>

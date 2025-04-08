@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./UserAuth.css"
 import axios from 'axios'
 import { AuthContext } from "./AuthContext";
+import Footer from "./Footer.js"
 
 function UserAuth() {
     const [status, setStatus] = useState("Sign in")
@@ -112,6 +113,7 @@ function UserAuth() {
 
                 </form>
             </div>
+            <Footer />
         </div>
 
     )

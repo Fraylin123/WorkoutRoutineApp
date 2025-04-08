@@ -1,6 +1,7 @@
 import data from "./articles.json"
 import Article from "./Article"
 import Navigation from './Navigation.js'
+import Footer from "./Footer.js"
 
 //Component for the Blog section
 function Blog() {
@@ -15,6 +16,8 @@ function Blog() {
                     ))
                 }
             </div>
+            <Footer />
+            
         </div>
     )
 }
