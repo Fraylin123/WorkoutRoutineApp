@@ -7,7 +7,7 @@ const exerciseSchema = new mongoose.Schema({
     primaryMuscle: String,
     secondaryMuscles: String,
     type: String,
-    video: String
+    video: String,
 });
 
 const Exercise = mongoose.model('Exercise', exerciseSchema);

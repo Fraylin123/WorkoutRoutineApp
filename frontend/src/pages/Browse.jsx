@@ -1,11 +1,11 @@
-import "./Browse.css";
+import "../assets/styles/Browse.css";
 import axios from 'axios'
 import { useEffect } from 'react'
-import Video from './Video'
+import Video from '../components/Video.jsx'
 import { useContext } from 'react';
-import { WorkoutContext } from './WorkoutContext.js'
-import Navigation from './Navigation.js'
-import Footer from "./Footer.js"
+import { WorkoutContext } from '../context/WorkoutContext.jsx'
+import Navigation from '../components/Navigation.jsx'
+import Footer from "../components/Footer.jsx"
 
 //Component for the Browse section
 function Browse() {

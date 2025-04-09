@@ -1,16 +1,16 @@
 //Env variable
-require('dotenv').config()
+require('dotenv').config();
 
 //Dependecies
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const {accountsDb, mongoose} = require("./config/db") //Automatically start the MySQL and MongoDB Atlas by importing them
+const { accountsDb, mongoose } = require('./config/db'); //Automatically start the MySQL and MongoDB Atlas by importing them
 
 const app = express();
 const port = process.env.Port;
 
-app.use(cors({origin: 'http://localhost:3000', credentials: true}));
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 

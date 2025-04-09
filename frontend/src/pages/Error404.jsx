@@ -1,4 +1,4 @@
-import Miguel from "./marmot.jpg"
+import Miguel from "../assets/images/marmot.jpg"
 
 function Error404() {
     return (

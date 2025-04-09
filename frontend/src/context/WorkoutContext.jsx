@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext } from 'react';
 //import axios from 'axios'
 
 export const WorkoutContext = createContext();
@@ -35,8 +35,9 @@ export const WorkoutProvider = ({ children }) => {
             currentDropdown, setCurrentDropdown,
             exerciseContainers, setExerciseContainers,
             exerciseSearch, setExerciseSearch
-        }}>
+        }}
+        >
             {children}
         </WorkoutContext.Provider>
-    )
-}
+    );
+};

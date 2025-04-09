@@ -1,12 +1,12 @@
-import './Home.css';
-import Navigation from './Navigation.js'
-import RightSection from './RightSection.js'
-import LeftSection from './LeftSection.js'
-import Result from "./Result.js"
+import '../assets/styles/Home.css';
+import Navigation from '../components/Navigation.jsx'
+import RightSection from '../components/RightSection.jsx'
+import LeftSection from '../components/LeftSection.jsx'
+import Result from "../components/Result.jsx"
 import { useEffect } from "react";
 import { useContext } from 'react';
-import { WorkoutContext } from './WorkoutContext.js'
-import Footer from "./Footer.js"
+import { WorkoutContext } from '../context/WorkoutContext.jsx'
+import Footer from "../components/Footer.jsx"
 
 //Component for the Home section
 function Home() {

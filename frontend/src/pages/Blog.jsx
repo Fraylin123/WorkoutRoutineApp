@@ -1,7 +1,7 @@
-import data from "./articles.json"
-import Article from "./Article"
-import Navigation from './Navigation.js'
-import Footer from "./Footer.js"
+import data from "../assets/articles.json"
+import Article from "../components/Article.jsx"
+import Navigation from '../components/Navigation.jsx'
+import Footer from "../components/Footer.jsx"
 
 //Component for the Blog section
 function Blog() {

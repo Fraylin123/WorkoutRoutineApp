@@ -1,13 +1,12 @@
-import Navigation from './Navigation.js'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from "./Home.js"
-import Browse from "./Browse.js"
-import Blog from "./Blog.js"
-import UserAuth from './UserAuth.js';
-import ProtectedRoute from './ProtectedRoute.js';
-import { WorkoutProvider } from './WorkoutContext.js';
-import { AuthProvider } from "./AuthContext.js"
-import Error404 from './Error404.js';
+import Home from './pages/Home.jsx';
+import Browse from './pages/Browse.jsx';
+import Blog from './pages/Blog.jsx';
+import UserAuth from './pages/UserAuth.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
+import { WorkoutProvider } from './context/WorkoutContext.jsx';
+import { AuthProvider } from './context/AuthContext.jsx';
+import Error404 from './pages/Error404.jsx';
 
 function App() {
     return (
@@ -26,7 +25,7 @@ function App() {
                 </WorkoutProvider>
             </AuthProvider>
         </div>
-    )
+    );
 }
 
 export default App;

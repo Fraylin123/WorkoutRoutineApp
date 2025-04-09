@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import "./UserAuth.css"
+import "../assets/styles/UserAuth.css"
 import axios from 'axios'
-import { AuthContext } from "./AuthContext";
-import Footer from "./Footer.js"
+import { AuthContext } from "../context/AuthContext.jsx";
+import Footer from "../components/Footer.jsx"
 
 function UserAuth() {
     const [status, setStatus] = useState("Sign in")
