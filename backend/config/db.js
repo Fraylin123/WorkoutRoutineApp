@@ -20,10 +20,7 @@ accountsDb.connect((error) => {
 
 //MongoDB Atlas connection
 mongoose
-    .connect(process.env.MongoURI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+    .connect(process.env.MongoURI)
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch((err) => console.error('Error connecting to MongoDB Atlas:', err));
 

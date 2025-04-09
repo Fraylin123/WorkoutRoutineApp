@@ -35,7 +35,7 @@ function UserAuth() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        if (status == "Sign in") {
+        if (status === "Sign in") {
             try {
                 const res = await axios.post('http://localhost:5000/api/auth/login', { username, password }, { withCredentials: true })
 
@@ -49,7 +49,7 @@ function UserAuth() {
 
         }
         else {
-            if (password == confirmationPassword) {
+            if (password === confirmationPassword) {
                 try {
                     const res = await axios.post('http://localhost:5000/api/auth/register', { username, password, email });
                     window.location.reload();
@@ -75,7 +75,7 @@ function UserAuth() {
             <div className="user-authentication-container">
                 <form className="form-container" onSubmit={handleSubmit}>
                     <div className="user-heading">
-                        <span>{status == "Sign in" ? "Sign in" : "Sign up"}</span>
+                        <span>{status === "Sign in" ? "Sign in" : "Sign up"}</span>
                         <div className="underline"></div>
                     </div>
                     <div className="inputs">
