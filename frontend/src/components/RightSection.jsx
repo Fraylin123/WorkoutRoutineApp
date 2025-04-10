@@ -10,7 +10,7 @@ function RightSection({ data }) {
         if (data.length > 0) {
             axios.get(`http://localhost:5000/api/exercises/${data}`, { withCredentials: true })
                 .then((response) => {
-                    console.log('Succesful request!');
+                 console.log('Succesful request!');
                     const vidID = response.data['video'];
                     setExerciseVid(`https://www.youtube.com/embed/${vidID}`);
                 })
