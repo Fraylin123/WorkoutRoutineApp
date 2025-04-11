@@ -17,9 +17,4 @@ app.use(cookieParser());
 app.use('/api/exercises', require('./routes/exercises.routes'));
 app.use('/api/auth', require('./routes/auth.routes'));
 
-//Testing server
-app.get('/', (req, res) => {
-    res.send('Backend server is running');
-  });
-
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));

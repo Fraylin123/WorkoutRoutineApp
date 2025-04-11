@@ -8,6 +8,7 @@ const accountsDb = mysql.createConnection({
     user: process.env.cUser,
     password: process.env.cPassword,
     database: process.env.cDatabase,
+    port: process.env.cPort,
 });
 
 accountsDb.connect((error) => {
