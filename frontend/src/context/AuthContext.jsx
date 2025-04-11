@@ -5,11 +5,12 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [authenticated, setAuthenticated] = useState(null);
+    const API_URL =  process.env.REACT_APP_API_URL;
 
     const checkAuth = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/exercises', { withCredentials: true });
-            setAuthenticated(true);
+            const response = await axios.get(`${API_URL}/api/exercises`, { withCredentials: true });
+            setAuthenticated(true)
         } catch (error) {
             console.log('erorr found', error);
             setAuthenticated(false);
@@ -18,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
+            const response = await axios.post(`${API_URL}/api/auth/logout`, {}, { withCredentials: true });
             setAuthenticated(false);
             window.location.href = '/';
         } catch (error) {

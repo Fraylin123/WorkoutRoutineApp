@@ -6,9 +6,10 @@ import axios from 'axios';
 //Component for the right part of the Home section (inner Home.js component)
 function RightSection({ data }) {
     const [exerciseVid, setExerciseVid] = useState('');
+    const API_URL =  process.env.REACT_APP_API_URL;
     useEffect(() => {
         if (data.length > 0) {
-            axios.get(`http://localhost:5000/api/exercises/${data}`, { withCredentials: true })
+            axios.get(`${API_URL}/api/exercises/${data}`, { withCredentials: true })
                 .then((response) => {
                  console.log('Succesful request!');
                     const vidID = response.data['video'];

@@ -9,6 +9,7 @@ import { useContext } from 'react';
 
 //Component for the left part of the Home section (inner Home.js component)
 function LeftSection({ setExerciseData, setJSON, day, errors, setErrors, setButtonClicked }) {
+    const API_URL =  process.env.REACT_APP_API_URL;
     const { exercisesList, setExercisesList, currentDropdown, setCurrentDropdown, exerciseJSON } =
         useContext(WorkoutContext);
 
@@ -25,7 +26,7 @@ function LeftSection({ setExerciseData, setJSON, day, errors, setErrors, setButt
 
     useEffect(() => {
         axios
-            .get('http://localhost:5000/api/exercises', { withCredentials: true })
+            .get(`${API_URL}/api/exercises`, { withCredentials: true })
             .then((response) => {
                 const exerciseNames = response.data.map((exercise) => exercise._id);
                 setExercisesList(exerciseNames);

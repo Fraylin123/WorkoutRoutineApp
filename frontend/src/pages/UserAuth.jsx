@@ -14,6 +14,7 @@ function UserAuth() {
     const [email, setEmail] = useState("")
     const navigate = useNavigate();
     const { checkAuth, authenticated } = useContext(AuthContext);
+    const API_URL =  process.env.REACT_APP_API_URL;
 
 
     const handleStatus = (event) => {
@@ -37,7 +38,7 @@ function UserAuth() {
 
         if (status === "Sign in") {
             try {
-                const res = await axios.post('http://localhost:5000/api/auth/login', { username, password }, { withCredentials: true })
+                const res = await axios.post(`${API_URL}/api/auth/login`, { username, password }, { withCredentials: true })
 
                 console.log(res.data)
                 await checkAuth()
@@ -51,7 +52,7 @@ function UserAuth() {
         else {
             if (password === confirmationPassword) {
                 try {
-                    const res = await axios.post('http://localhost:5000/api/auth/register', { username, password, email });
+                    const res = await axios.post(`${API_URL}/api/auth/register`, { username, password, email });
                     window.location.reload();
                 } catch (error) {
                     console.log("The error is", error);

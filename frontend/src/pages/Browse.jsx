@@ -11,10 +11,11 @@ import Footer from "../components/Footer.jsx"
 function Browse() {
     const { exerciseContainers, setExerciseContainers } = useContext(WorkoutContext)
     const { exerciseSearch, setExerciseSearch } = useContext(WorkoutContext)
+    const API_URL =  process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         if (exerciseContainers.length == 0) {
-            axios.get("http://localhost:5000/api/exercises", {withCredentials:true})
+            axios.get(`${API_URL}/api/exercises`, {withCredentials:true})
                 .then((response) => {
                     setExerciseContainers(response.data);
                 })
