@@ -16,7 +16,6 @@ function UserAuth() {
     const { checkAuth, authenticated } = useContext(AuthContext);
     const API_URL =  process.env.REACT_APP_API_URL;
 
-
     const handleStatus = (event) => {
         event.preventDefault()
 
