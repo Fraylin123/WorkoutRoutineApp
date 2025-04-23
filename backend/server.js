@@ -10,7 +10,7 @@ const { accountsDb, mongoose } = require('./config/db'); //Automatically start t
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'https://workout-routine-app-wine.vercel.app', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
