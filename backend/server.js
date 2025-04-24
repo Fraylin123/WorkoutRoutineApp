@@ -10,11 +10,13 @@ const { accountsDb, mongoose } = require('./config/db'); //Automatically start t
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'http://workout-routine-app-frontend.s3-website-us-east-1.amazonaws.com', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
+app.set('trust proxy', 1);
+
 
 app.use('/api/exercises', require('./routes/exercises.routes'));
 app.use('/api/auth', require('./routes/auth.routes'));
 
-app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));
