@@ -39,7 +39,6 @@ function handleConnection() {
 
 handleConnection();
 
-
 //MongoDB Atlas connection
 mongoose
     .connect(process.env.MongoURI)
