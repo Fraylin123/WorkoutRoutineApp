@@ -26,8 +26,8 @@ const login = async (req, res) => {
             //Assigning cookie to authenticated user
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: true,
-                sameSite: 'none',
+                secure: false,
+                sameSite: 'lax',
             });
 
             res.json({
@@ -67,8 +67,8 @@ const register = async (req, res) => {
 const logout = async (req, res) => {
     res.clearCookie('token', {
         httpOnly: true,
-        secure: true,
-        sameSite: 'none',
+        secure: false,
+        sameSite: 'lax',
     });
     res.json({ message: 'Logged out successfully' });
 };

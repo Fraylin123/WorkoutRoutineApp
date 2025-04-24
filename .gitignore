@@ -1,7 +1,7 @@
 /backend/.env
 /frontend/.env
 /frontend/node_modules
-/frontend/build
+
 /backend/node_modules
 /node_modules
 /.prettierrc

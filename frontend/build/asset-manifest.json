@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c200b437.css",
+    "main.js": "/static/js/main.6674c52c.js",
+    "static/media/marmot.jpg": "/static/media/marmot.83210551b8246e8173de.jpg",
+    "static/media/github.png": "/static/media/github.f11021803f68852df283.png",
+    "index.html": "/index.html",
+    "main.c200b437.css.map": "/static/css/main.c200b437.css.map",
+    "main.6674c52c.js.map": "/static/js/main.6674c52c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c200b437.css",
+    "static/js/main.6674c52c.js"
+  ]
+}
