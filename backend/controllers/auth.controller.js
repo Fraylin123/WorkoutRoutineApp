@@ -35,6 +35,7 @@ const login = (req, res) => {
                     message: 'User authenticated',
                     user: { id: user.id, username: user.username },
                 });
+
             } catch (error) {
                 console.log(error);
                 res.status(500).json({ error: 'Authentication error' })
@@ -57,15 +58,20 @@ const register = (req, res) => {
                 message: 'Account already exists with that email',
             });
 
-        const hashedPw = await bcrypt.hash(password, 10); //Hash plaintext password with a cost factor of 10, 2^10 = 1024 iterations
-        accountsDbPool.query(
-            'INSERT INTO users (username, email, hashed_pw) VALUES (?, ?, ?);',
-            [username, email, hashedPw],
-            (error) => {
-                if (error) return res.status(500).json({ error: 'Registration error' });
-                res.status(201).json({ message: 'User created' });
-            }
-        );
+        try {
+            const hashedPw = await bcrypt.hash(password, 10); //Hash plaintext password with a cost factor of 10, 2^10 = 1024 iterations
+            accountsDbPool.query(
+                'INSERT INTO users (username, email, hashed_pw) VALUES (?, ?, ?);',
+                [username, email, hashedPw],
+                (error) => {
+                    if (error) return res.status(500).json({ error: 'Registration error' });
+                    res.status(201).json({ message: 'User created' });
+                }
+            );
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ error: 'Hashing error' });
+        }
     });
 };
 
