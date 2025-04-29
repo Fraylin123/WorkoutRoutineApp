@@ -17,7 +17,7 @@ function ProtectedRoute({ children }) {
             </div>
         );
     }
-    console.log('Authentication is', authenticated);
+    //console.log('Authentication is', authenticated);
 
     return authenticated ? children : <Navigate to="/" />;
 }

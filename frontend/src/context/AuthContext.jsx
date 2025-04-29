@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
             const response = await axios.get(`${API_URL}/api/exercises`, { withCredentials: true });
             setAuthenticated(true)
         } catch (error) {
-            console.log('erorr found', error);
+            console.log('Error', error);
             setAuthenticated(false);
         }
     };

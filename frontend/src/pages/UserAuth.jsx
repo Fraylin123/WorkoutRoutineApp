@@ -38,8 +38,7 @@ function UserAuth() {
         if (status === "Sign in") {
             try {
                 const res = await axios.post(`${API_URL}/api/auth/login`, { username, password }, { withCredentials: true })
-
-                console.log(res.data)
+                //console.log(res.data)
                 await checkAuth()
                 navigate("/home")
 
